@@ -1,0 +1,93 @@
+{
+  "fontes": {
+    "promobit": [
+      "https://www.promobit.com.br/promocoes/recentes/",
+      "https://www.promobit.com.br/promocoes/cafeteiras/s/",
+      "https://www.promobit.com.br/promocoes/cafeteira-expresso/s/",
+      "https://www.promobit.com.br/promocoes/cafeteira-italiana/s/",
+      "https://www.promobit.com.br/promocoes/cafeteira-prensa-francesa/s/"
+    ],
+    "gatry": [
+      "https://gatry.com/",
+      "https://gatry.com/promocoes/?q=cafe",
+      "https://gatry.com/promocoes/?q=cafeteira",
+      "https://gatry.com/promocoes/?q=moedor"
+    ],
+    "telegram": [
+      "pechinchou",
+      "boletando"
+    ]
+  },
+  "criterios": {
+    "abaixo_do_mercado_pct": 20,
+    "queda_historico_pct": 5,
+    "avisar_relampago_sem_comparacao": true
+  },
+  "palavras_chave": [
+    "cafe",
+    "cafes",
+    "cafeteira",
+    "espresso",
+    "expresso",
+    "moedor de cafe",
+    "moedor manual",
+    "tamper",
+    "pitcher",
+    "leiteira",
+    "porta filtro",
+    "portafiltro",
+    "v60",
+    "hario",
+    "chemex",
+    "aeropress",
+    "prensa francesa",
+    "moka",
+    "bialetti",
+    "nespresso",
+    "dolce gusto",
+    "chaleira bico de ganso",
+    "graos",
+    "barista"
+  ],
+  "palavras_relampago": [
+    "relampago",
+    "por tempo limitado",
+    "so hoje",
+    "corre",
+    "ultimas unidades",
+    "bug"
+  ],
+  "excluir": [
+    "mesa de cafe",
+    "pimenta",
+    "moedor de carne",
+    "capa",
+    "camiseta",
+    "caneca",
+    "achocolatado"
+  ],
+  "lista_de_desejos": [
+    {
+      "nome": "Moedor Kingrinder",
+      "termos": [
+        "kingrinder"
+      ],
+      "preco_max": 450
+    },
+    {
+      "nome": "Tamper",
+      "termos": [
+        "tamper"
+      ],
+      "preco_max": 120
+    },
+    {
+      "nome": "Cafeteira Oster Prima Latte",
+      "termos": [
+        "oster",
+        "prima latte"
+      ],
+      "preco_max": 900
+    }
+  ]
+}
