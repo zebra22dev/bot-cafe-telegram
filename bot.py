@@ -1,6 +1,7 @@
 """Bot de promoções de café -> Telegram.
 
-Fontes: Promobit, Gatry e canais públicos de promoções no Telegram.
+Fontes: Promobit, Gatry, canais públicos de promoções no Telegram
+e lojas Shopify (ex.: Moka Clube).
 Só avisa quando a oferta realmente compensa:
   - preço bem abaixo do menor preço encontrado no Buscapé, ou
   - menor preço que o bot já viu para aquele produto, ou
@@ -96,6 +97,32 @@ def fonte_telegram(canal):
     return out
 
 
+def fonte_shopify(loja):
+    """Lê o catálogo de uma loja Shopify (ex.: Moka Clube) via /products.json."""
+    base = loja["url"].rstrip("/")
+    dominio = re.sub(r"^https?://(www\.)?", "", base)
+    out, pagina = [], 1
+    while pagina <= 10:
+        r = requests.get(f"{base}/products.json?limit=250&page={pagina}", headers=UA, timeout=30)
+        produtos = r.json().get("products", [])
+        if not produtos:
+            break
+        for p in produtos:
+            for v in p.get("variants", []):
+                if not v.get("available"):
+                    continue
+                preco = float(v["price"])
+                antes = float(v["compare_at_price"]) if v.get("compare_at_price") else None
+                nome = p["title"] + ("" if v["title"] == "Default Title" else f" ({v['title']})")
+                out.append({"id": f"loja-{dominio}-{v['id']}-{preco}-{antes}", "chave_loja": f"loja:{dominio}:{v['id']}",
+                            "titulo": nome, "preco": preco, "preco_antes": antes, "loja": loja["nome"],
+                            "cupom": None, "texto": nome, "desconto_minimo": loja.get("desconto_minimo", 15),
+                            "link": f"{base}/products/{p['handle']}?variant={v['id']}"})
+        pagina += 1
+        time.sleep(1)
+    return out
+
+
 # ---------- avaliação: compensa? ----------
 _cache_mercado = {}
 
@@ -128,7 +155,31 @@ def menor_preco_mercado(titulo):
     _cache_mercado[busca] = resultado
     return resultado
 
+def avaliar_loja(oferta, cfg, historico):
+    """Itens de loja: avisa se estiver em promoção na loja ou no menor preço já visto."""
+    titulo = norm(oferta["titulo"])
+    preco = oferta["preco"]
+    if any(tem(titulo, x) for x in cfg["excluir"]):
+        return None
+    for item in cfg["lista_de_desejos"]:
+        if all(tem(titulo, t) for t in item["termos"]) and preco <= item["preco_max"]:
+            return {"tipo": "alvo", "motivo": f"🎯 {item['nome']} abaixo de R$ {item['preco_max']:.0f}", "relampago": False}
+    motivos = []
+    antes = oferta.get("preco_antes")
+    if antes and preco < antes * (1 - oferta["desconto_minimo"] / 100):
+        motivos.append(f"🏷️ {(antes - preco) / antes * 100:.0f}% OFF na loja (era R$ {antes:.2f})")
+    anterior = historico.get(oferta["chave_loja"])
+    if anterior and preco < anterior["min"] * (1 - cfg["criterios"]["queda_historico_pct"] / 100):
+        motivos.append(f"📉 menor preço já visto (antes R$ {anterior['min']:.2f})")
+    if not anterior or preco < anterior["min"]:
+        historico[oferta["chave_loja"]] = {"min": preco, "data": date.today().isoformat()}
+    if motivos:
+        return {"tipo": "geral", "motivo": "\n".join(motivos), "relampago": False}
+    return None
+
 def avaliar(oferta, cfg, historico):
+    if "chave_loja" in oferta:
+        return avaliar_loja(oferta, cfg, historico)
     texto = norm(oferta["titulo"] + " " + oferta["texto"][:300])
     titulo = norm(oferta["titulo"])
     preco = oferta["preco"]
@@ -220,12 +271,13 @@ def main():
     coletadas = []
     fontes = ([(fonte_promobit, u) for u in cfg["fontes"]["promobit"]] +
               [(fonte_gatry, u) for u in cfg["fontes"]["gatry"]] +
-              [(fonte_telegram, c) for c in cfg["fontes"]["telegram"]])
+              [(fonte_telegram, c) for c in cfg["fontes"]["telegram"]] +
+              [(fonte_shopify, l) for l in cfg["fontes"].get("lojas_shopify", [])])
     for funcao, alvo in fontes:
         try:
             coletadas += funcao(alvo)
         except Exception as e:
-            print("Erro em", alvo, "->", e)
+            print("Erro em", alvo.get("nome") if isinstance(alvo, dict) else alvo, "->", e)
 
     mensagens, repetidas = [], set()
     for o in coletadas:

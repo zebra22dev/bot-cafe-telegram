@@ -16,6 +16,13 @@
     "telegram": [
       "pechinchou",
       "boletando"
+    ],
+    "lojas_shopify": [
+      {
+        "nome": "Moka Clube",
+        "url": "https://www.mokaclube.com.br",
+        "desconto_minimo": 15
+      }
     ]
   },
   "criterios": {
