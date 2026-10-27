@@ -23,7 +23,20 @@
         "url": "https://www.mokaclube.com.br",
         "desconto_minimo": 15
       }
-    ]
+    ],
+    "aliexpress": {
+      "queda_minima_pct": 15,
+      "buscas": [
+        "tamper cafe",
+        "distribuidor cafe espresso",
+        "moedor cafe manual",
+        "pitcher leite barista",
+        "balanca cafe",
+        "porta filtro sem fundo",
+        "kingrinder",
+        "timemore"
+      ]
+    }
   },
   "criterios": {
     "abaixo_do_mercado_pct": 20,

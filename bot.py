@@ -1,7 +1,7 @@
 """Bot de promoções de café -> Telegram.
 
 Fontes: Promobit, Gatry, canais públicos de promoções no Telegram
-e lojas Shopify (ex.: Moka Clube).
+lojas Shopify (ex.: Moka Clube) e buscas no AliExpress.
 Só avisa quando a oferta realmente compensa:
   - preço bem abaixo do menor preço encontrado no Buscapé, ou
   - menor preço que o bot já viu para aquele produto, ou
@@ -123,6 +123,45 @@ def fonte_shopify(loja):
     return out
 
 
+def fonte_aliexpress(busca, queda_min):
+    """Busca no AliExpress Brasil (preços em R$). Avisa só em queda real de preço."""
+    url = "https://pt.aliexpress.com/w/wholesale-" + urllib.parse.quote(busca.replace(" ", "-")) + ".html"
+    r = requests.get(url, headers=UA, timeout=30,
+                     cookies={"aep_usuc_f": "site=bra&c_tp=BRL&region=BR&b_locale=pt_BR"})
+    m = re.search(r"_init_data_\s*=\s*\{\s*data:\s*", r.text)
+    if not m:
+        print("AliExpress não respondeu à busca:", busca)
+        return []
+    dados, _ = json.JSONDecoder().raw_decode(r.text[m.end():])
+
+    def achar(o):
+        if isinstance(o, dict):
+            if isinstance(o.get("itemList"), dict) and "content" in o["itemList"]:
+                return o["itemList"]["content"]
+            o = list(o.values())
+        if isinstance(o, list):
+            for v in o:
+                achou = achar(v)
+                if achou:
+                    return achou
+        return None
+
+    out = []
+    for it in achar(dados) or []:
+        pid = it.get("productId")
+        venda = ((it.get("prices") or {}).get("salePrice") or {})
+        if not pid or not venda.get("minPrice") or venda.get("currencyCode") not in (None, "BRL"):
+            continue
+        preco = float(venda["minPrice"])
+        titulo = (it.get("title") or {}).get("displayTitle", "")
+        out.append({"id": f"ali-{pid}-{preco}", "chave_loja": f"ali:{pid}", "titulo": titulo[:150],
+                    "preco": preco, "preco_antes": None, "loja": "AliExpress", "cupom": None,
+                    "texto": titulo, "desconto_minimo": 100, "queda_min": queda_min,
+                    "link": f"https://pt.aliexpress.com/item/{pid}.html"})
+    time.sleep(2)
+    return out
+
+
 # ---------- avaliação: compensa? ----------
 _cache_mercado = {}
 
@@ -161,15 +200,20 @@ def avaliar_loja(oferta, cfg, historico):
     preco = oferta["preco"]
     if any(tem(titulo, x) for x in cfg["excluir"]):
         return None
+    anterior = historico.get(oferta["chave_loja"])
+    caiu = anterior is not None and preco < anterior["min"]
+    novo_na_loja = anterior is None and "queda_min" not in oferta  # AliExpress: só avisa em queda
     for item in cfg["lista_de_desejos"]:
-        if all(tem(titulo, t) for t in item["termos"]) and preco <= item["preco_max"]:
+        if all(tem(titulo, t) for t in item["termos"]) and preco <= item["preco_max"] and (caiu or novo_na_loja):
+            if not anterior or preco < anterior["min"]:
+                historico[oferta["chave_loja"]] = {"min": preco, "data": date.today().isoformat()}
             return {"tipo": "alvo", "motivo": f"🎯 {item['nome']} abaixo de R$ {item['preco_max']:.0f}", "relampago": False}
     motivos = []
     antes = oferta.get("preco_antes")
     if antes and preco < antes * (1 - oferta["desconto_minimo"] / 100):
         motivos.append(f"🏷️ {(antes - preco) / antes * 100:.0f}% OFF na loja (era R$ {antes:.2f})")
-    anterior = historico.get(oferta["chave_loja"])
-    if anterior and preco < anterior["min"] * (1 - cfg["criterios"]["queda_historico_pct"] / 100):
+    queda = oferta.get("queda_min", cfg["criterios"]["queda_historico_pct"])
+    if anterior and preco < anterior["min"] * (1 - queda / 100):
         motivos.append(f"📉 menor preço já visto (antes R$ {anterior['min']:.2f})")
     if not anterior or preco < anterior["min"]:
         historico[oferta["chave_loja"]] = {"min": preco, "data": date.today().isoformat()}
@@ -273,6 +317,8 @@ def main():
               [(fonte_gatry, u) for u in cfg["fontes"]["gatry"]] +
               [(fonte_telegram, c) for c in cfg["fontes"]["telegram"]] +
               [(fonte_shopify, l) for l in cfg["fontes"].get("lojas_shopify", [])])
+    ali = cfg["fontes"].get("aliexpress", {})
+    fontes += [(lambda b: fonte_aliexpress(b, ali.get("queda_minima_pct", 15)), b) for b in ali.get("buscas", [])]
     for funcao, alvo in fontes:
         try:
             coletadas += funcao(alvo)
