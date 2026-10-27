@@ -1,7 +1,8 @@
 """Bot de promoções de café -> Telegram.
 
 Fontes: Promobit, Gatry, canais públicos de promoções no Telegram
-lojas Shopify (ex.: Moka Clube) e buscas no AliExpress, Americanas e KaBuM!.
+dezenas de lojas e torrefações (Shopify, Nuvemshop, WooCommerce, VTEX)
+e buscas no AliExpress, Americanas e KaBuM!.
 Só avisa quando a oferta realmente compensa:
   - preço bem abaixo do menor preço encontrado no Buscapé, ou
   - menor preço que o bot já viu para aquele produto, ou
@@ -207,6 +208,96 @@ def fonte_kabum(busca, queda_min):
     return out
 
 
+def fonte_loja(loja):
+    """Lê o catálogo inteiro de uma loja (Shopify, Nuvemshop, WooCommerce ou VTEX)."""
+    funcoes = {"shopify": fonte_shopify, "nuvemshop": fonte_nuvemshop,
+               "woocommerce": fonte_woocommerce, "vtex": fonte_vtex}
+    return funcoes[loja.get("plataforma", "shopify")](loja)
+
+
+def _item_loja(loja, pid, titulo, preco, antes, link):
+    base = loja["url"].rstrip("/")
+    dominio = re.sub(r"^https?://(www\.)?", "", base)
+    return {"id": f"loja-{dominio}-{pid}-{preco}-{antes}", "chave_loja": f"loja:{dominio}:{pid}",
+            "titulo": titulo[:150], "preco": preco, "preco_antes": antes, "loja": loja["nome"],
+            "cupom": None, "texto": titulo, "desconto_minimo": loja.get("desconto_minimo", 15), "link": link}
+
+
+def fonte_nuvemshop(loja):
+    base = loja["url"].rstrip("/")
+    out, vistos = [], set()
+    for pagina in range(1, 11):
+        s = get(f"{base}/produtos/" + (f"page/{pagina}/" if pagina > 1 else ""))
+        novos = 0
+        for b in re.split(r'(?=<div[^>]+class="[^"]*js-item-product)', s)[1:]:
+            pid = re.search(r'data-product-id="(\d+)"', b)
+            var = re.search(r'data-variants="([^"]+)"', b)
+            if not pid or not var or pid.group(1) in vistos:
+                continue
+            vistos.add(pid.group(1)); novos += 1
+            try:
+                variantes = [v for v in json.loads(html.unescape(var.group(1)))
+                             if v.get("available") and v.get("price_number")]
+            except Exception:
+                continue
+            if not variantes:
+                continue
+            v = min(variantes, key=lambda x: x["price_number"])
+            link = re.search(r'href="([^"]*/produtos/[^"]+)"', b)
+            nome = re.search(r'title="([^"]+)"', b) or re.search(r'js-item-name[^>]*>([^<]+)<', b)
+            antes = v.get("compare_at_price_number")
+            out.append(_item_loja(loja, pid.group(1), html.unescape(nome.group(1)).strip() if nome else "",
+                                  float(v["price_number"]), float(antes) if antes else None,
+                                  html.unescape(link.group(1)) if link else base))
+        if novos == 0:
+            break
+        time.sleep(1)
+    return out
+
+
+def fonte_woocommerce(loja):
+    base = loja["url"].rstrip("/")
+    out = []
+    for pagina in range(1, 11):
+        r = requests.get(f"{base}/wp-json/wc/store/v1/products?per_page=100&page={pagina}", headers=UA, timeout=30)
+        produtos = r.json() if r.ok else []
+        if not produtos:
+            break
+        for p in produtos:
+            pr = p.get("prices") or {}
+            if not p.get("is_in_stock") or not pr.get("price"):
+                continue
+            div = 10 ** int(pr.get("currency_minor_unit", 2))
+            preco = int(pr["price"]) / div
+            regular = int(pr["regular_price"]) / div if pr.get("regular_price") else None
+            out.append(_item_loja(loja, p["id"], html.unescape(p.get("name", "")), preco,
+                                  regular if regular and regular > preco else None, p.get("permalink", base)))
+        time.sleep(1)
+    return out
+
+
+def fonte_vtex(loja):
+    base = loja["url"].rstrip("/")
+    out = []
+    for inicio in range(0, 1000, 50):
+        r = requests.get(f"{base}/api/catalog_system/pub/products/search?_from={inicio}&_to={inicio + 49}",
+                         headers=UA, timeout=30)
+        produtos = r.json() if r.status_code in (200, 206) else []
+        if not produtos:
+            break
+        for p in produtos:
+            ofertas = [s["commertialOffer"] for it in p.get("items", [])[:1] for s in it.get("sellers", [])
+                       if s.get("commertialOffer", {}).get("AvailableQuantity", 0) > 0 and s["commertialOffer"].get("Price")]
+            if not ofertas:
+                continue
+            o = min(ofertas, key=lambda x: x["Price"])
+            antes = o.get("ListPrice") if o.get("ListPrice", 0) > o["Price"] else None
+            out.append(_item_loja(loja, p["productId"], p.get("productName", ""), float(o["Price"]),
+                                  float(antes) if antes else None, p.get("link", base)))
+        time.sleep(1)
+    return out
+
+
 # ---------- avaliação: compensa? ----------
 _cache_mercado = {}
 
@@ -240,28 +331,32 @@ def menor_preco_mercado(titulo):
     return resultado
 
 def avaliar_loja(oferta, cfg, historico):
-    """Itens de loja: avisa se estiver em promoção na loja ou no menor preço já visto."""
+    """Itens de loja: avisa quando entra em promoção, cai de preço ou bate a lista de desejos.
+    Na primeira vez que o bot vê uma loja, ele só aprende os preços (sem avisar)."""
     titulo = norm(oferta["titulo"])
     preco = oferta["preco"]
+    chave = oferta["chave_loja"]
+    anterior = historico.get(chave)
+    ultimo = (anterior or {}).get("ult", (anterior or {}).get("min"))
+    if not anterior or preco < anterior["min"]:
+        historico[chave] = {"min": preco, "data": date.today().isoformat()}
+    historico[chave]["ult"] = preco
     if any(tem(titulo, x) for x in cfg["excluir"]):
         return None
-    anterior = historico.get(oferta["chave_loja"])
-    caiu = anterior is not None and preco < anterior["min"]
-    novo_na_loja = anterior is None and "queda_min" not in oferta  # AliExpress: só avisa em queda
+    caiu = ultimo is not None and preco < ultimo
+    if "queda_min" in oferta:  # AliExpress/Americanas/KaBuM!: só quedas grandes contam
+        caiu = anterior is not None and preco < anterior["min"] * (1 - oferta["queda_min"] / 100)
+    novo_na_loja = anterior is None and not oferta.get("loja_nova") and "queda_min" not in oferta
     for item in cfg["lista_de_desejos"]:
         if all(tem(titulo, t) for t in item["termos"]) and preco <= item["preco_max"] and (caiu or novo_na_loja):
-            if not anterior or preco < anterior["min"]:
-                historico[oferta["chave_loja"]] = {"min": preco, "data": date.today().isoformat()}
             return {"tipo": "alvo", "motivo": f"🎯 {item['nome']} abaixo de R$ {item['preco_max']:.0f}", "relampago": False}
     motivos = []
     antes = oferta.get("preco_antes")
-    if antes and preco < antes * (1 - oferta["desconto_minimo"] / 100):
-        motivos.append(f"🏷️ {(antes - preco) / antes * 100:.0f}% OFF na loja (era R$ {antes:.2f})")
+    if caiu and antes and preco < antes * (1 - oferta["desconto_minimo"] / 100):
+        motivos.append(f"🏷️ entrou em promoção: {(antes - preco) / antes * 100:.0f}% OFF (era R$ {antes:.2f})")
     queda = oferta.get("queda_min", cfg["criterios"]["queda_historico_pct"])
     if anterior and preco < anterior["min"] * (1 - queda / 100):
         motivos.append(f"📉 menor preço já visto (antes R$ {anterior['min']:.2f})")
-    if not anterior or preco < anterior["min"]:
-        historico[oferta["chave_loja"]] = {"min": preco, "data": date.today().isoformat()}
     if motivos:
         return {"tipo": "geral", "motivo": "\n".join(motivos), "relampago": oferta.get("relampago", False)}
     return None
@@ -361,7 +456,7 @@ def main():
     fontes = ([(fonte_promobit, u) for u in cfg["fontes"]["promobit"]] +
               [(fonte_gatry, u) for u in cfg["fontes"]["gatry"]] +
               [(fonte_telegram, c) for c in cfg["fontes"]["telegram"]] +
-              [(fonte_shopify, l) for l in cfg["fontes"].get("lojas_shopify", [])])
+              [(fonte_loja, l) for l in cfg["fontes"].get("lojas", [])])
     ali = cfg["fontes"].get("aliexpress", {})
     fontes += [(lambda b: fonte_aliexpress(b, ali.get("queda_minima_pct", 15)), b) for b in ali.get("buscas", [])]
     ame = cfg["fontes"].get("americanas", {})
@@ -373,6 +468,13 @@ def main():
             coletadas += funcao(alvo)
         except Exception as e:
             print("Erro em", alvo.get("nome") if isinstance(alvo, dict) else alvo, "->", e)
+
+    conhecidas = set(estado.setdefault("lojas_conhecidas", []))
+    for o in coletadas:
+        if "chave_loja" in o:
+            o["loja_nova"] = o["chave_loja"].rsplit(":", 1)[0] not in conhecidas
+    estado["lojas_conhecidas"] = sorted(conhecidas | {o["chave_loja"].rsplit(":", 1)[0]
+                                                      for o in coletadas if "chave_loja" in o})
 
     mensagens, repetidas = [], set()
     for o in coletadas:
@@ -390,7 +492,7 @@ def main():
     for t in textos:
         enviar(t, chat)
 
-    estado["vistos"] = estado["vistos"][-5000:]
+    estado["vistos"] = estado["vistos"][-20000:]
     json.dump(estado, open(ESTADO, "w", encoding="utf-8"), ensure_ascii=False)
     print(f"{len(coletadas)} coletadas, {len(textos)} enviadas" + (" (1ª execução: só aprendendo)" if primeira else ""))
 
