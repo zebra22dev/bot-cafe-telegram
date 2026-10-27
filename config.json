@@ -17,13 +17,6 @@
       "pechinchou",
       "boletando"
     ],
-    "lojas_shopify": [
-      {
-        "nome": "Moka Clube",
-        "url": "https://www.mokaclube.com.br",
-        "desconto_minimo": 15
-      }
-    ],
     "aliexpress": {
       "queda_minima_pct": 15,
       "buscas": [
@@ -58,7 +51,147 @@
         "cafeteira nespresso",
         "maquina de cafe"
       ]
-    }
+    },
+    "lojas": [
+      {
+        "nome": "Moka Clube",
+        "url": "https://www.mokaclube.com.br",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Rei do Café",
+        "url": "https://reidocafe.com.br",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Café do Mercado",
+        "url": "https://www.cafeoteca.com.br",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Bravo Coffee",
+        "url": "https://www.bravocoffee.com.br",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Menu Café",
+        "url": "https://menucafe.com.br",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Coffee Mais",
+        "url": "https://www.coffeemais.com",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Café Orfeu",
+        "url": "https://www.cafeorfeu.com.br",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Um Coffee Co.",
+        "url": "https://www.umcoffeeco.com.br",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Café Italle",
+        "url": "https://www.cafeitalle.com.br",
+        "plataforma": "shopify",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Astral Cafés",
+        "url": "https://astraltorrefacao.com.br",
+        "plataforma": "nuvemshop",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Vinni Coffee",
+        "url": "https://vinnicoffee.com.br",
+        "plataforma": "nuvemshop",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "NetCafés",
+        "url": "https://loja.netcafes.com.br",
+        "plataforma": "nuvemshop",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Breathe Co",
+        "url": "https://breatheco.com.br",
+        "plataforma": "nuvemshop",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Baristando",
+        "url": "https://baristando.com.br",
+        "plataforma": "nuvemshop",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Café Constantino",
+        "url": "https://cafeconstantino.com.br",
+        "plataforma": "nuvemshop",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Coffee Lab",
+        "url": "https://coffeelab.com.br",
+        "plataforma": "nuvemshop",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Terra Natal",
+        "url": "https://terranatalcafe.com.br",
+        "plataforma": "woocommerce",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Unique Cafés",
+        "url": "https://uniquecafes.com.br",
+        "plataforma": "woocommerce",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Lucca Cafés Especiais",
+        "url": "https://luccacafesespeciais.com.br",
+        "plataforma": "woocommerce",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Koar",
+        "url": "https://www.koar.com.br",
+        "plataforma": "woocommerce",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Café Dutra",
+        "url": "https://loja.cafedutra.com.br",
+        "plataforma": "woocommerce",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Café Store",
+        "url": "https://www.cafestore.com.br",
+        "plataforma": "vtex",
+        "desconto_minimo": 15
+      },
+      {
+        "nome": "Wolff Café",
+        "url": "https://wolffcafe.com.br",
+        "plataforma": "vtex",
+        "desconto_minimo": 15
+      }
+    ]
   },
   "criterios": {
     "abaixo_do_mercado_pct": 20,
@@ -106,7 +239,13 @@
     "capa",
     "camiseta",
     "caneca",
-    "achocolatado"
+    "achocolatado",
+    "curso",
+    "workshop",
+    "assinatura",
+    "terapia",
+    "vale presente",
+    "gift card"
   ],
   "lista_de_desejos": [
     {
