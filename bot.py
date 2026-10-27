@@ -1,7 +1,7 @@
 """Bot de promoções de café -> Telegram.
 
 Fontes: Promobit, Gatry, canais públicos de promoções no Telegram
-lojas Shopify (ex.: Moka Clube) e buscas no AliExpress.
+lojas Shopify (ex.: Moka Clube) e buscas no AliExpress, Americanas e KaBuM!.
 Só avisa quando a oferta realmente compensa:
   - preço bem abaixo do menor preço encontrado no Buscapé, ou
   - menor preço que o bot já viu para aquele produto, ou
@@ -162,6 +162,51 @@ def fonte_aliexpress(busca, queda_min):
     return out
 
 
+def fonte_americanas(busca, queda_min):
+    """Busca na Americanas (API pública da loja). Avisa só em queda real de preço."""
+    url = ("https://www.americanas.com.br/api/catalog_system/pub/products/search?ft="
+           + urllib.parse.quote(busca) + "&_from=0&_to=49")
+    out = []
+    for p in requests.get(url, headers=UA, timeout=30).json():
+        for it in p.get("items", [])[:1]:
+            vendedores = [s["commertialOffer"] for s in it.get("sellers", [])
+                          if s.get("commertialOffer", {}).get("AvailableQuantity", 0) > 0
+                          and s["commertialOffer"].get("Price")]
+            if not vendedores:
+                continue
+            preco = float(min(v["Price"] for v in vendedores))
+            out.append({"id": f"ame-{p['productId']}-{preco}", "chave_loja": f"ame:{p['productId']}",
+                        "titulo": p.get("productName", "")[:150], "preco": preco, "preco_antes": None,
+                        "loja": "Americanas", "cupom": None, "texto": p.get("productName", ""),
+                        "desconto_minimo": 100, "queda_min": queda_min, "link": p.get("link", "")})
+    time.sleep(1)
+    return out
+
+
+def fonte_kabum(busca, queda_min):
+    """Busca no KaBuM! (preço no PIX). Ofertas Ninja ganham ⚡."""
+    s = get("https://www.kabum.com.br/busca/" + urllib.parse.quote(busca.replace(" ", "-")))
+    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', s, re.S)
+    if not m:
+        return []
+    dados = json.loads(m.group(1))["props"]["pageProps"].get("data")
+    if isinstance(dados, str):
+        dados = json.loads(dados)
+    out = []
+    for p in ((dados or {}).get("catalogServer") or {}).get("data", []):
+        preco = p.get("priceWithDiscount") or p.get("price")
+        if not p.get("available") or not preco:
+            continue
+        preco = float(preco)
+        out.append({"id": f"kabum-{p['code']}-{preco}", "chave_loja": f"kabum:{p['code']}",
+                    "titulo": p.get("name", "")[:150], "preco": preco, "preco_antes": None,
+                    "loja": "KaBuM! (PIX)", "cupom": None, "texto": p.get("name", ""),
+                    "desconto_minimo": 100, "queda_min": queda_min, "relampago": bool(p.get("offer")),
+                    "link": f"https://www.kabum.com.br/produto/{p['code']}/{p.get('friendlyName', '')}"})
+    time.sleep(1)
+    return out
+
+
 # ---------- avaliação: compensa? ----------
 _cache_mercado = {}
 
@@ -218,7 +263,7 @@ def avaliar_loja(oferta, cfg, historico):
     if not anterior or preco < anterior["min"]:
         historico[oferta["chave_loja"]] = {"min": preco, "data": date.today().isoformat()}
     if motivos:
-        return {"tipo": "geral", "motivo": "\n".join(motivos), "relampago": False}
+        return {"tipo": "geral", "motivo": "\n".join(motivos), "relampago": oferta.get("relampago", False)}
     return None
 
 def avaliar(oferta, cfg, historico):
@@ -319,6 +364,10 @@ def main():
               [(fonte_shopify, l) for l in cfg["fontes"].get("lojas_shopify", [])])
     ali = cfg["fontes"].get("aliexpress", {})
     fontes += [(lambda b: fonte_aliexpress(b, ali.get("queda_minima_pct", 15)), b) for b in ali.get("buscas", [])]
+    ame = cfg["fontes"].get("americanas", {})
+    fontes += [(lambda b: fonte_americanas(b, ame.get("queda_minima_pct", 10)), b) for b in ame.get("buscas", [])]
+    kab = cfg["fontes"].get("kabum", {})
+    fontes += [(lambda b: fonte_kabum(b, kab.get("queda_minima_pct", 10)), b) for b in kab.get("buscas", [])]
     for funcao, alvo in fontes:
         try:
             coletadas += funcao(alvo)

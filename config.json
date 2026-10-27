@@ -36,6 +36,28 @@
         "kingrinder",
         "timemore"
       ]
+    },
+    "americanas": {
+      "queda_minima_pct": 10,
+      "buscas": [
+        "cafeteira",
+        "cafeteira espresso",
+        "cafeteira italiana",
+        "moedor de cafe",
+        "prensa francesa",
+        "nespresso",
+        "dolce gusto",
+        "cafe em graos"
+      ]
+    },
+    "kabum": {
+      "queda_minima_pct": 10,
+      "buscas": [
+        "cafeteira",
+        "cafeteira expresso",
+        "cafeteira nespresso",
+        "maquina de cafe"
+      ]
     }
   },
   "criterios": {
