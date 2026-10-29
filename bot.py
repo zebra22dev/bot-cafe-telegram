@@ -2,7 +2,8 @@
 
 Fontes: Promobit, Gatry, canais públicos de promoções no Telegram
 dezenas de lojas e torrefações (Shopify, Nuvemshop, WooCommerce, VTEX)
-e buscas no AliExpress, Americanas e KaBuM!.
+e buscas no AliExpress, KaBuM! e lojas VTEX (Americanas, WebContinental...).
+Também manda um radar diário com o menor preço das máquinas que você está de olho.
 Só avisa quando a oferta realmente compensa:
   - preço bem abaixo do menor preço encontrado no Buscapé, ou
   - menor preço que o bot já viu para aquele produto, ou
@@ -10,7 +11,7 @@ Só avisa quando a oferta realmente compensa:
 Ofertas relâmpago ganham ⚡ na mensagem.
 """
 import html, json, os, re, statistics, sys, time, unicodedata, urllib.parse
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 import requests
 
 PASTA = os.path.dirname(os.path.abspath(__file__))
@@ -163,10 +164,10 @@ def fonte_aliexpress(busca, queda_min):
     return out
 
 
-def fonte_americanas(busca, queda_min):
-    """Busca na Americanas (API pública da loja). Avisa só em queda real de preço."""
-    url = ("https://www.americanas.com.br/api/catalog_system/pub/products/search?ft="
-           + urllib.parse.quote(busca) + "&_from=0&_to=49")
+def fonte_vtex_busca(loja, busca):
+    """Busca numa loja VTEX (Americanas, WebContinental...). Avisa só em queda real de preço."""
+    base, pref = loja["url"].rstrip("/"), loja["prefixo"]
+    url = f"{base}/api/catalog_system/pub/products/search?ft={urllib.parse.quote(busca)}&_from=0&_to=49"
     out = []
     for p in requests.get(url, headers=UA, timeout=30).json():
         for it in p.get("items", [])[:1]:
@@ -176,10 +177,11 @@ def fonte_americanas(busca, queda_min):
             if not vendedores:
                 continue
             preco = float(min(v["Price"] for v in vendedores))
-            out.append({"id": f"ame-{p['productId']}-{preco}", "chave_loja": f"ame:{p['productId']}",
+            out.append({"id": f"{pref}-{p['productId']}-{preco}", "chave_loja": f"{pref}:{p['productId']}",
                         "titulo": p.get("productName", "")[:150], "preco": preco, "preco_antes": None,
-                        "loja": "Americanas", "cupom": None, "texto": p.get("productName", ""),
-                        "desconto_minimo": 100, "queda_min": queda_min, "link": p.get("link", "")})
+                        "loja": loja["nome"], "cupom": None, "texto": p.get("productName", ""),
+                        "desconto_minimo": 100, "queda_min": loja.get("queda_minima_pct", 10),
+                        "link": p.get("link", "")})
     time.sleep(1)
     return out
 
@@ -301,6 +303,12 @@ def fonte_vtex(loja):
 # ---------- avaliação: compensa? ----------
 _cache_mercado = {}
 
+def bate_desejo(item, titulo, preco):
+    """O título tem todos os termos, nenhum termo excluído e o preço está na faixa?"""
+    return (all(tem(titulo, t) for t in item["termos"])
+            and not any(tem(titulo, x) for x in item.get("excluir", []))
+            and item.get("preco_min", 0) <= preco <= item["preco_max"])
+
 def menor_preco_mercado(titulo):
     """Busca o produto no Buscapé e devolve o menor preço de itens parecidos."""
     ts = tokens(titulo, 6)
@@ -348,7 +356,7 @@ def avaliar_loja(oferta, cfg, historico):
         caiu = anterior is not None and preco < anterior["min"] * (1 - oferta["queda_min"] / 100)
     novo_na_loja = anterior is None and not oferta.get("loja_nova") and "queda_min" not in oferta
     for item in cfg["lista_de_desejos"]:
-        if all(tem(titulo, t) for t in item["termos"]) and preco <= item["preco_max"] and (caiu or novo_na_loja):
+        if bate_desejo(item, titulo, preco) and (caiu or novo_na_loja):
             return {"tipo": "alvo", "motivo": f"🎯 {item['nome']} abaixo de R$ {item['preco_max']:.0f}", "relampago": False}
     motivos = []
     antes = oferta.get("preco_antes")
@@ -375,7 +383,7 @@ def avaliar(oferta, cfg, historico):
     relampago = any(tem(texto, x) for x in cfg["palavras_relampago"])
 
     for item in cfg["lista_de_desejos"]:
-        if all(tem(titulo, t) for t in item["termos"]) and preco <= item["preco_max"]:
+        if bate_desejo(item, titulo, preco):
             return {"tipo": "alvo", "motivo": f"🎯 {item['nome']} abaixo de R$ {item['preco_max']:.0f}",
                     "relampago": relampago}
 
@@ -445,6 +453,47 @@ def enviar(texto, chat):
     time.sleep(1)
 
 
+# ---------- radar diário (Black Friday) ----------
+def atualizar_radar(coletadas, cfg, estado):
+    """Guarda o preço atual de cada produto que bate com os modelos do radar."""
+    hoje = date.today().isoformat()
+    radar = estado.setdefault("radar", {})
+    for modelo in cfg.get("radar", []):
+        r = radar.setdefault(modelo["nome"], {"itens": {}, "min": None})
+        for o in coletadas:
+            titulo = norm(o["titulo"])
+            if (all(tem(titulo, t) for t in modelo["termos"])
+                    and not any(tem(titulo, x) for x in modelo.get("excluir", []))
+                    and o["preco"] >= modelo.get("preco_min", 0)):
+                r["itens"][o.get("chave_loja") or o["id"]] = {
+                    "preco": o["preco"], "titulo": o["titulo"], "loja": o.get("loja", ""),
+                    "link": o["link"], "dia": hoje}
+                if not r["min"] or o["preco"] < r["min"]["preco"]:
+                    r["min"] = {"preco": o["preco"], "loja": o.get("loja", ""), "data": hoje}
+        limite = (date.today() - timedelta(days=2)).isoformat()
+        r["itens"] = {k: v for k, v in r["itens"].items() if v["dia"] >= limite}
+
+def resumo_radar(cfg, estado):
+    """Uma vez por dia (a partir das 9h de Brasília), monta o resumo do radar."""
+    agora = datetime.now(timezone(timedelta(hours=-3)))
+    if not cfg.get("radar") or agora.hour < 9 or estado.get("radar_enviado") == agora.date().isoformat():
+        return None
+    estado["radar_enviado"] = agora.date().isoformat()
+    linhas = ["📊 Radar de máquinas – menor preço nas fontes do bot"]
+    for modelo in cfg["radar"]:
+        r = estado.get("radar", {}).get(modelo["nome"], {})
+        itens = sorted(r.get("itens", {}).values(), key=lambda x: x["preco"])
+        if not itens:
+            linhas.append(f"\n• {modelo['nome']}: ainda não apareceu")
+            continue
+        m = itens[0]
+        txt = f"\n• {modelo['nome']}: R$ {m['preco']:.2f} – {m['loja']}\n  {m['link']}"
+        if r.get("min"):
+            txt += f"\n  menor já visto: R$ {r['min']['preco']:.2f} ({r['min']['loja']}, {r['min']['data']})"
+        linhas.append(txt)
+    return "\n".join(linhas)
+
+
 def main():
     cfg = json.load(open(CONFIG, encoding="utf-8"))
     primeira = not os.path.exists(ESTADO)
@@ -459,8 +508,8 @@ def main():
               [(fonte_loja, l) for l in cfg["fontes"].get("lojas", [])])
     ali = cfg["fontes"].get("aliexpress", {})
     fontes += [(lambda b: fonte_aliexpress(b, ali.get("queda_minima_pct", 15)), b) for b in ali.get("buscas", [])]
-    ame = cfg["fontes"].get("americanas", {})
-    fontes += [(lambda b: fonte_americanas(b, ame.get("queda_minima_pct", 10)), b) for b in ame.get("buscas", [])]
+    for loja in cfg["fontes"].get("buscas_vtex", []):
+        fontes += [(lambda b, loja=loja: fonte_vtex_busca(loja, b), b) for b in loja.get("buscas", [])]
     kab = cfg["fontes"].get("kabum", {})
     fontes += [(lambda b: fonte_kabum(b, kab.get("queda_minima_pct", 10)), b) for b in kab.get("buscas", [])]
     for funcao, alvo in fontes:
@@ -487,10 +536,15 @@ def main():
             repetidas.add(marca)
             mensagens.append((0 if av["relampago"] or av["tipo"] == "alvo" else 1, formatar(o, av)))
 
+    atualizar_radar(coletadas, cfg, estado)
+    resumo = None if primeira else resumo_radar(cfg, estado)
+
     mensagens.sort(key=lambda x: x[0])  # relâmpago e lista de desejos primeiro
     textos = [m for _, m in mensagens]
     for t in textos:
         enviar(t, chat)
+    if resumo:
+        enviar(html.escape(resumo, quote=False), chat)
 
     estado["vistos"] = estado["vistos"][-20000:]
     json.dump(estado, open(ESTADO, "w", encoding="utf-8"), ensure_ascii=False)
