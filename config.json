@@ -15,7 +15,9 @@
     ],
     "telegram": [
       "pechinchou",
-      "boletando"
+      "boletando",
+      "cuponomia",
+      "achadinhos"
     ],
     "aliexpress": {
       "queda_minima_pct": 15,
@@ -30,245 +32,96 @@
         "timemore"
       ]
     },
-    "americanas": {
-      "queda_minima_pct": 10,
-      "buscas": [
-        "cafeteira",
-        "cafeteira espresso",
-        "cafeteira italiana",
-        "moedor de cafe",
-        "prensa francesa",
-        "nespresso",
-        "dolce gusto",
-        "cafe em graos"
-      ]
-    },
     "kabum": {
       "queda_minima_pct": 10,
       "buscas": [
         "cafeteira",
         "cafeteira expresso",
         "cafeteira nespresso",
-        "maquina de cafe"
+        "maquina de cafe",
+        "gaggia",
+        "delonghi"
       ]
     },
     "lojas": [
+      {"nome": "Moka Clube", "url": "https://www.mokaclube.com.br", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Máquinas e Café", "url": "https://www.maquinasecafe.com.br", "plataforma": "shopify", "desconto_minimo": 10},
+      {"nome": "Rei do Café", "url": "https://reidocafe.com.br", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Café do Mercado", "url": "https://www.cafeoteca.com.br", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Bravo Coffee", "url": "https://www.bravocoffee.com.br", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Menu Café", "url": "https://menucafe.com.br", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Coffee Mais", "url": "https://www.coffeemais.com", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Café Orfeu", "url": "https://www.cafeorfeu.com.br", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Um Coffee Co.", "url": "https://www.umcoffeeco.com.br", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Café Italle", "url": "https://www.cafeitalle.com.br", "plataforma": "shopify", "desconto_minimo": 15},
+      {"nome": "Astral Cafés", "url": "https://astraltorrefacao.com.br", "plataforma": "nuvemshop", "desconto_minimo": 15},
+      {"nome": "Vinni Coffee", "url": "https://vinnicoffee.com.br", "plataforma": "nuvemshop", "desconto_minimo": 15},
+      {"nome": "NetCafés", "url": "https://loja.netcafes.com.br", "plataforma": "nuvemshop", "desconto_minimo": 15},
+      {"nome": "Breathe Co", "url": "https://breatheco.com.br", "plataforma": "nuvemshop", "desconto_minimo": 15},
+      {"nome": "Baristando", "url": "https://baristando.com.br", "plataforma": "nuvemshop", "desconto_minimo": 15},
+      {"nome": "Café Constantino", "url": "https://cafeconstantino.com.br", "plataforma": "nuvemshop", "desconto_minimo": 15},
+      {"nome": "Coffee Lab", "url": "https://coffeelab.com.br", "plataforma": "nuvemshop", "desconto_minimo": 15},
+      {"nome": "Terra Natal", "url": "https://terranatalcafe.com.br", "plataforma": "woocommerce", "desconto_minimo": 15},
+      {"nome": "Unique Cafés", "url": "https://uniquecafes.com.br", "plataforma": "woocommerce", "desconto_minimo": 15},
+      {"nome": "Lucca Cafés Especiais", "url": "https://luccacafesespeciais.com.br", "plataforma": "woocommerce", "desconto_minimo": 15},
+      {"nome": "Koar", "url": "https://www.koar.com.br", "plataforma": "woocommerce", "desconto_minimo": 15},
+      {"nome": "Café Dutra", "url": "https://loja.cafedutra.com.br", "plataforma": "woocommerce", "desconto_minimo": 15},
+      {"nome": "Café Store", "url": "https://www.cafestore.com.br", "plataforma": "vtex", "desconto_minimo": 15},
+      {"nome": "Wolff Café", "url": "https://wolffcafe.com.br", "plataforma": "vtex", "desconto_minimo": 15}
+    ],
+    "buscas_vtex": [
       {
-        "nome": "Moka Clube",
-        "url": "https://www.mokaclube.com.br",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
+        "nome": "Americanas",
+        "url": "https://www.americanas.com.br",
+        "prefixo": "ame",
+        "queda_minima_pct": 10,
+        "buscas": ["cafeteira", "cafeteira espresso", "cafeteira italiana", "moedor de cafe", "prensa francesa", "nespresso", "dolce gusto", "cafe em graos", "maquina de cafe expresso", "delonghi"]
       },
       {
-        "nome": "Rei do Café",
-        "url": "https://reidocafe.com.br",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Café do Mercado",
-        "url": "https://www.cafeoteca.com.br",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Bravo Coffee",
-        "url": "https://www.bravocoffee.com.br",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Menu Café",
-        "url": "https://menucafe.com.br",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Coffee Mais",
-        "url": "https://www.coffeemais.com",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Café Orfeu",
-        "url": "https://www.cafeorfeu.com.br",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Um Coffee Co.",
-        "url": "https://www.umcoffeeco.com.br",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Café Italle",
-        "url": "https://www.cafeitalle.com.br",
-        "plataforma": "shopify",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Astral Cafés",
-        "url": "https://astraltorrefacao.com.br",
-        "plataforma": "nuvemshop",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Vinni Coffee",
-        "url": "https://vinnicoffee.com.br",
-        "plataforma": "nuvemshop",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "NetCafés",
-        "url": "https://loja.netcafes.com.br",
-        "plataforma": "nuvemshop",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Breathe Co",
-        "url": "https://breatheco.com.br",
-        "plataforma": "nuvemshop",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Baristando",
-        "url": "https://baristando.com.br",
-        "plataforma": "nuvemshop",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Café Constantino",
-        "url": "https://cafeconstantino.com.br",
-        "plataforma": "nuvemshop",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Coffee Lab",
-        "url": "https://coffeelab.com.br",
-        "plataforma": "nuvemshop",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Terra Natal",
-        "url": "https://terranatalcafe.com.br",
-        "plataforma": "woocommerce",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Unique Cafés",
-        "url": "https://uniquecafes.com.br",
-        "plataforma": "woocommerce",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Lucca Cafés Especiais",
-        "url": "https://luccacafesespeciais.com.br",
-        "plataforma": "woocommerce",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Koar",
-        "url": "https://www.koar.com.br",
-        "plataforma": "woocommerce",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Café Dutra",
-        "url": "https://loja.cafedutra.com.br",
-        "plataforma": "woocommerce",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Café Store",
-        "url": "https://www.cafestore.com.br",
-        "plataforma": "vtex",
-        "desconto_minimo": 15
-      },
-      {
-        "nome": "Wolff Café",
-        "url": "https://wolffcafe.com.br",
-        "plataforma": "vtex",
-        "desconto_minimo": 15
+        "nome": "WebContinental",
+        "url": "https://www.webcontinental.com.br",
+        "prefixo": "webc",
+        "queda_minima_pct": 10,
+        "buscas": ["gaggia", "delonghi", "cafeteira expresso", "maquina de cafe expresso", "moedor de cafe", "breville"]
       }
     ]
   },
   "criterios": {
-    "abaixo_do_mercado_pct": 20,
+    "abaixo_do_mercado_pct": 15,
     "queda_historico_pct": 5,
     "avisar_relampago_sem_comparacao": true
   },
   "palavras_chave": [
-    "cafe",
-    "cafes",
-    "cafeteira",
-    "espresso",
-    "expresso",
-    "moedor de cafe",
-    "moedor manual",
-    "tamper",
-    "pitcher",
-    "leiteira",
-    "porta filtro",
-    "portafiltro",
-    "v60",
-    "hario",
-    "chemex",
-    "aeropress",
-    "prensa francesa",
-    "moka",
-    "bialetti",
-    "nespresso",
-    "dolce gusto",
-    "chaleira bico de ganso",
-    "graos",
-    "barista"
+    "cafe", "cafes", "cafeteira", "espresso", "expresso", "moedor de cafe", "moedor manual",
+    "tamper", "pitcher", "leiteira", "porta filtro", "portafiltro", "v60", "hario", "chemex",
+    "aeropress", "prensa francesa", "moka", "bialetti", "nespresso", "dolce gusto",
+    "chaleira bico de ganso", "graos", "barista"
   ],
-  "palavras_relampago": [
-    "relampago",
-    "por tempo limitado",
-    "so hoje",
-    "corre",
-    "ultimas unidades",
-    "bug"
-  ],
-  "excluir": [
-    "mesa de cafe",
-    "pimenta",
-    "moedor de carne",
-    "capa",
-    "camiseta",
-    "caneca",
-    "achocolatado",
-    "curso",
-    "workshop",
-    "assinatura",
-    "terapia",
-    "vale presente",
-    "gift card"
-  ],
+  "palavras_relampago": ["relampago", "por tempo limitado", "so hoje", "corre", "ultimas unidades", "bug"],
+  "excluir": ["mesa de cafe", "pimenta", "moedor de carne", "capa", "camiseta", "caneca", "achocolatado",
+              "curso", "workshop", "assinatura", "terapia", "vale presente", "gift card"],
   "lista_de_desejos": [
     {
-      "nome": "Moedor Kingrinder",
-      "termos": [
-        "kingrinder"
-      ],
-      "preco_max": 450
+      "nome": "Gaggia Classic (Evo Pro / E24)",
+      "termos": ["gaggia", "classic"],
+      "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa"],
+      "preco_min": 2000,
+      "preco_max": 3700
     },
-    {
-      "nome": "Tamper",
-      "termos": [
-        "tamper"
-      ],
-      "preco_max": 120
-    },
-    {
-      "nome": "Cafeteira Oster Prima Latte",
-      "termos": [
-        "oster",
-        "prima latte"
-      ],
-      "preco_max": 900
-    }
+    {"nome": "Moedor Kingrinder", "termos": ["kingrinder"], "preco_max": 450},
+    {"nome": "Tamper", "termos": ["tamper"], "excluir": ["distribuidor", "nivelador", "wdt"], "preco_max": 120},
+    {"nome": "Cafeteira Oster Prima Latte", "termos": ["oster", "prima latte"], "preco_max": 900}
+  ],
+  "radar": [
+    {"nome": "Gaggia Classic (Evo Pro / E24)", "termos": ["gaggia", "classic"], "preco_min": 2000,
+     "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa"]},
+    {"nome": "Breville / Tramontina Bambino", "termos": ["bambino", "breville"], "preco_min": 1500,
+     "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa"]},
+    {"nome": "Breville / Tramontina Barista Express", "termos": ["express", "breville"], "preco_min": 2500,
+     "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa", "bambino"]},
+    {"nome": "De'Longhi La Specialista", "termos": ["specialista"], "preco_min": 2500,
+     "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa"]},
+    {"nome": "Lelit (Anna, Victoria...)", "termos": ["lelit"], "preco_min": 2500,
+     "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa"]}
   ]
 }
