@@ -3,7 +3,8 @@
 Fontes: Promobit, Gatry, canais públicos de promoções no Telegram
 dezenas de lojas e torrefações (Shopify, Nuvemshop, WooCommerce, VTEX)
 e buscas no AliExpress, KaBuM! e lojas VTEX (Americanas, WebContinental...).
-Também manda um radar diário com o menor preço das máquinas que você está de olho.
+Também manda um radar diário com o menor preço das máquinas que você está de olho
+e avisa de cursos de barista, cupping e eventos de café (Sympla, Hotmart e escolas).
 Só avisa quando a oferta realmente compensa:
   - preço bem abaixo do menor preço encontrado no Buscapé, ou
   - menor preço que o bot já viu para aquele produto, ou
@@ -494,6 +495,121 @@ def resumo_radar(cfg, estado):
     return "\n".join(linhas)
 
 
+# ---------- cursos, workshops e eventos de café ----------
+def _sympla_cidade(cidade, pagina):
+    url = f"https://www.sympla.com.br/eventos/{cidade}" + (f"?page={pagina}" if pagina > 1 else "")
+    s = get(url)
+    eventos = []
+    for chunk in re.findall(r'self\.__next_f\.push\(\[1,"(.*?)"\]\)</script>', s, re.S):
+        try:
+            txt = json.loads('"' + chunk + '"')
+        except Exception:
+            continue
+        for m in re.finditer(r'"searchDataResult":\{"data":', txt):
+            try:
+                eventos += json.JSONDecoder().raw_decode(txt[m.end():])[0]
+            except Exception:
+                pass
+    return eventos
+
+def _hotmart(busca):
+    s = get("https://hotmart.com/pt-br/marketplace/produtos?q=" + urllib.parse.quote(busca))
+    m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', s, re.S)
+    if not m:
+        return []
+    dados = json.loads(m.group(1))["props"]["pageProps"].get("resultsData", {}).get("requestData", {})
+    return dados.get("results", [])
+
+def eh_de_cafe(titulo, ce):
+    t = norm(titulo)
+    if any(tem(t, x) for x in ce["excluir"]):
+        return False
+    if any(tem(t, x) for x in ce["termos_fortes"]):
+        return True
+    return (tem(t, "cafe") or tem(t, "cafes")) and any(tem(t, x) for x in ce["termos_curso"])
+
+def buscar_cursos_eventos(cfg, coletadas):
+    """Junta cursos e eventos de café: Sympla (cidades), Hotmart (online) e lojas/escolas monitoradas."""
+    ce = cfg["cursos_eventos"]
+    achados = []
+    for cidade in ce.get("sympla_cidades", []):
+        nome, paginas = cidade["slug"], cidade.get("paginas", 3)
+        for pg in range(1, paginas + 1):
+            try:
+                evs = _sympla_cidade(nome, pg)
+            except Exception as e:
+                print("Sympla falhou:", nome, e); break
+            if not evs:
+                break
+            for e in evs:
+                if eh_de_cafe(e.get("name", ""), ce):
+                    loc = e.get("location") or {}
+                    achados.append({"id": f"sympla-{e.get('id')}", "titulo": e.get("name", ""),
+                                    "quando": (e.get("start_date_formats") or {}).get("pt", e.get("start_date", "")[:10]),
+                                    "onde": ", ".join(x for x in [loc.get("city"), loc.get("state")] if x) or "Online",
+                                    "preco": None, "fonte": "Sympla", "link": e.get("url", "")})
+            time.sleep(1)
+    for busca in ce.get("hotmart_buscas", []):
+        try:
+            for p in _hotmart(busca):
+                tags = " ".join(p.get("tags") or [])
+                if (p.get("totalReviews") or 0) < ce.get("hotmart_min_avaliacoes", 5) or p.get("language") not in (None, "PT_BR"):
+                    continue
+                if eh_de_cafe(p.get("title", ""), ce) or (tem(norm(tags), "barista") and tem(norm(tags), "cafe")):
+                    nota = f" ⭐ {p['rating']:.1f} ({p.get('totalReviews', 0)} avaliações)" if p.get("rating") else ""
+                    achados.append({"id": f"hotmart-{p['productId']}", "titulo": p.get("title", ""), "peso": p.get("totalReviews") or 0,
+                                    "quando": f"curso online{nota}", "onde": "Online", "preco": None, "fonte": "Hotmart",
+                                    "link": f"https://hotmart.com/pt-br/marketplace/produtos/{p.get('slug')}/{p.get('producerReferenceCode', '')}"})
+            time.sleep(1)
+        except Exception as e:
+            print("Hotmart falhou:", busca, e)
+    for o in coletadas:  # cursos vendidos pelas escolas e torrefações já monitoradas
+        if "chave_loja" in o and o["chave_loja"].startswith("loja:") and any(
+                tem(norm(o["titulo"]), x) for x in ce["termos_curso"] + ce.get("termos_curso_loja", [])):
+            achados.append({"id": "curso-" + o["chave_loja"], "titulo": o["titulo"], "quando": "",
+                            "onde": "", "preco": o["preco"], "fonte": o.get("loja", ""), "link": o["link"]})
+    unicos = {}
+    for a in achados:
+        unicos.setdefault(a["id"], a)
+    return list(unicos.values())
+
+def texto_curso(c, cidade_usuario):
+    perto = cidade_usuario and norm(cidade_usuario) in norm(c["onde"] + " " + c["titulo"])
+    icone = "📍" if perto else ("💻" if c["onde"] == "Online" else "🎓")
+    linhas = [f"{icone} {c['titulo']}"]
+    detalhes = " · ".join(x for x in [c["quando"], c["onde"], f"R$ {c['preco']:.2f}" if c["preco"] else ""] if x)
+    if detalhes:
+        linhas.append(detalhes)
+    linhas.append(f"{c['fonte']} – {c['link']}")
+    return "\n".join(linhas)
+
+def mensagens_cursos(cfg, estado, coletadas):
+    """A cada X horas procura cursos/eventos. Na 1ª vez manda um resumo; depois, só os novos."""
+    ce = cfg.get("cursos_eventos")
+    if not ce:
+        return []
+    agora = datetime.now(timezone.utc)
+    ultima = estado.get("cursos_ultima")
+    if ultima and agora - datetime.fromisoformat(ultima) < timedelta(hours=ce.get("intervalo_horas", 6)):
+        return []
+    estado["cursos_ultima"] = agora.isoformat()
+    achados = buscar_cursos_eventos(cfg, coletadas)
+    vistos = set(estado.get("cursos_vistos", []))
+    novos = [c for c in achados if c["id"] not in vistos]
+    estado["cursos_vistos"] = list(vistos | {c["id"] for c in achados})[-5000:]
+    cidade = ce.get("cidade", "")
+    def ordem(c):  # perto de você > presencial/escolas > online mais bem avaliado
+        perto = cidade and norm(cidade) in norm(c["onde"] + c["titulo"])
+        return (0 if perto else 1 if c["fonte"] != "Hotmart" else 2, -c.get("peso", 0))
+    novos.sort(key=ordem)
+    if not novos:
+        return []
+    if not vistos:  # primeira vez: um resumo só
+        corpo = "\n\n".join(texto_curso(c, cidade) for c in novos[:25])
+        return [f"📚 Cursos e eventos de café encontrados agora ({len(novos)}):\n\n{corpo}"]
+    return [f"🆕 Novo curso/evento de café\n{texto_curso(c, cidade)}" for c in novos[:10]]
+
+
 def main():
     cfg = json.load(open(CONFIG, encoding="utf-8"))
     primeira = not os.path.exists(ESTADO)
@@ -538,6 +654,10 @@ def main():
 
     atualizar_radar(coletadas, cfg, estado)
     resumo = None if primeira else resumo_radar(cfg, estado)
+    try:
+        cursos = mensagens_cursos(cfg, estado, coletadas)
+    except Exception as e:
+        print("Cursos/eventos falhou:", e); cursos = []
 
     mensagens.sort(key=lambda x: x[0])  # relâmpago e lista de desejos primeiro
     textos = [m for _, m in mensagens]
@@ -545,6 +665,8 @@ def main():
         enviar(t, chat)
     if resumo:
         enviar(html.escape(resumo, quote=False), chat)
+    for c in cursos:
+        enviar(html.escape(c, quote=False), chat)
 
     estado["vistos"] = estado["vistos"][-20000:]
     json.dump(estado, open(ESTADO, "w", encoding="utf-8"), ensure_ascii=False)
