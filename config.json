@@ -64,7 +64,7 @@
     ]
   },
   "criterios": {"abaixo_do_mercado_pct": 15, "queda_historico_pct": 5, "avisar_relampago_sem_comparacao": true},
-  "palavras_chave": ["cafe", "cafes", "cafeteira", "espresso", "expresso", "moedor de cafe", "moedor manual", "tamper", "pitcher", "leiteira", "porta filtro", "portafiltro", "v60", "hario", "chemex", "aeropress", "prensa francesa", "moka", "bialetti", "nespresso", "dolce gusto", "chaleira bico de ganso", "graos", "barista"],
+  "palavras_chave": ["cafe", "cafes", "cafeteira", "espresso", "expresso", "moedor de cafe", "moedor manual", "tamper", "pitcher", "leiteira", "porta filtro", "portafiltro", "v60", "hario", "chemex", "aeropress", "prensa francesa", "moka", "bialetti", "nespresso", "dolce gusto", "chaleira bico de ganso", "graos", "barista", "kit barista", "balanca de cafe", "jarra de leite", "nivelador de cafe", "distribuidor de cafe", "wdt", "knock box", "escova de grupo", "pano barista", "termometro de leite"],
   "palavras_relampago": ["relampago", "por tempo limitado", "so hoje", "corre", "ultimas unidades", "bug"],
   "excluir": ["mesa de cafe", "pimenta", "moedor de carne", "capa", "camiseta", "caneca", "achocolatado", "curso", "workshop", "assinatura", "terapia", "vale presente", "gift card"],
   "lista_de_desejos": [
@@ -79,5 +79,23 @@
     {"nome": "Breville / Tramontina Barista Express", "termos": ["express", "breville"], "preco_min": 2500, "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa", "bambino"]},
     {"nome": "De'Longhi La Specialista", "termos": ["specialista"], "preco_min": 2500, "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa"]},
     {"nome": "Lelit (Anna, Victoria...)", "termos": ["lelit"], "preco_min": 2500, "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa"]}
-  ]
+  ],
+  "cursos_eventos": {
+    "intervalo_horas": 6,
+    "cidade": "São José do Rio Preto",
+    "sympla_cidades": [
+      {"slug": "sao-jose-do-rio-preto-sp", "paginas": 8},
+      {"slug": "ribeirao-preto-sp", "paginas": 4},
+      {"slug": "campinas-sp", "paginas": 4},
+      {"slug": "sao-paulo-sp", "paginas": 8},
+      {"slug": "belo-horizonte-mg", "paginas": 4},
+      {"slug": "curitiba-pr", "paginas": 4}
+    ],
+    "hotmart_buscas": ["barista", "latte art", "cafe especial", "cupping", "torra de cafe", "metodos de preparo cafe", "espresso"],
+    "termos_fortes": ["barista", "baristas", "cupping", "latte art", "espresso", "coffee", "cafe especial", "cafes especiais", "q grader", "torra de cafe", "torrefacao", "degustacao de cafe", "analise sensorial", "metodos de preparo", "sca"],
+    "termos_curso": ["curso", "workshop", "oficina", "treinamento", "aula", "masterclass", "formacao", "imersao", "degustacao", "palestra", "certificacao", "modulo"],
+    "excluir": ["cafe da manha", "coffee break", "cafe colonial", "cafe com", "cha da tarde", "culto", "igreja", "show", "festa", "baile", "bloco", "el barista", "taller", "apostila", "ventosas", "massagem", "masaje", "cafeomancia", "borra", "colher"],
+    "hotmart_min_avaliacoes": 5,
+    "termos_curso_loja": ["sca", "q grader", "cupping", "barista skills", "brewing skills", "sensory skills"]
+  }
 }
