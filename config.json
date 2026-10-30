@@ -19,11 +19,13 @@
       "https://gatry.com/",
       "https://gatry.com/promocoes/?q=cafe",
       "https://gatry.com/promocoes/?q=cafeteira",
-      "https://gatry.com/promocoes/?q=moedor"
+      "https://gatry.com/promocoes/?q=moedor",
+      "https://gatry.com/promocoes/?q=chaleira",
+      "https://gatry.com/promocoes/?q=garrafa+termica"
     ],
     "telegram": ["pechinchou", "boletando", "cuponomia", "achadinhos", "cupons", "promocao", "ofertasdodia", "ofertaskabum"],
-    "aliexpress": {"queda_minima_pct": 15, "buscas": ["tamper cafe", "distribuidor cafe espresso", "moedor cafe manual", "pitcher leite barista", "balanca cafe", "porta filtro sem fundo", "kingrinder", "timemore"]},
-    "kabum": {"queda_minima_pct": 10, "buscas": ["cafeteira", "cafeteira expresso", "cafeteira nespresso", "maquina de cafe", "gaggia", "delonghi"]},
+    "aliexpress": {"queda_minima_pct": 15, "buscas": ["tamper cafe", "distribuidor cafe espresso", "moedor cafe manual", "pitcher leite barista", "balanca cafe", "porta filtro sem fundo", "kingrinder", "timemore", "chaleira bico de ganso", "coffee server vidro", "garrafa termica cafe"]},
+    "kabum": {"queda_minima_pct": 10, "buscas": ["cafeteira", "cafeteira expresso", "cafeteira nespresso", "maquina de cafe", "gaggia", "delonghi", "garrafa termica"]},
     "lojas": [
       {"nome": "Moka Clube", "url": "https://www.mokaclube.com.br", "plataforma": "shopify", "desconto_minimo": 15},
       {"nome": "Máquinas e Café", "url": "https://www.maquinasecafe.com.br", "plataforma": "shopify", "desconto_minimo": 10},
@@ -51,22 +53,22 @@
       {"nome": "Wolff Café", "url": "https://wolffcafe.com.br", "plataforma": "vtex", "desconto_minimo": 15}
     ],
     "buscas_vtex": [
-      {"nome": "Americanas", "url": "https://www.americanas.com.br", "prefixo": "ame", "queda_minima_pct": 10, "buscas": ["cafeteira", "cafeteira espresso", "cafeteira italiana", "moedor de cafe", "prensa francesa", "nespresso", "dolce gusto", "cafe em graos", "maquina de cafe expresso", "delonghi"]},
-      {"nome": "WebContinental", "url": "https://www.webcontinental.com.br", "prefixo": "webc", "queda_minima_pct": 10, "buscas": ["gaggia", "delonghi", "cafeteira expresso", "maquina de cafe expresso", "moedor de cafe", "breville"]},
-      {"nome": "Oster", "url": "https://www.oster.com.br", "prefixo": "ost", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso"]},
-      {"nome": "Electrolux", "url": "https://loja.electrolux.com.br", "prefixo": "elx", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso"]},
-      {"nome": "Britânia", "url": "https://www.britania.com.br", "prefixo": "bri", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso"]},
-      {"nome": "Philco", "url": "https://www.philco.com.br", "prefixo": "phi", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso"]},
-      {"nome": "Mondial", "url": "https://www.mondial.com.br", "prefixo": "mon", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso"]},
-      {"nome": "Arno", "url": "https://www.arno.com.br", "prefixo": "arn", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso"]},
-      {"nome": "Melitta", "url": "https://www.melitta.com.br", "prefixo": "mel", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "cafe em graos"]},
-      {"nome": "Cadence", "url": "https://www.cadence.com.br", "prefixo": "cad", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso"]}
+      {"nome": "Americanas", "url": "https://www.americanas.com.br", "prefixo": "ame", "queda_minima_pct": 10, "buscas": ["cafeteira", "cafeteira espresso", "cafeteira italiana", "moedor de cafe", "prensa francesa", "nespresso", "dolce gusto", "cafe em graos", "maquina de cafe expresso", "delonghi", "chaleira", "garrafa termica", "jarra termica", "bule"]},
+      {"nome": "WebContinental", "url": "https://www.webcontinental.com.br", "prefixo": "webc", "queda_minima_pct": 10, "buscas": ["gaggia", "delonghi", "cafeteira expresso", "maquina de cafe expresso", "moedor de cafe", "breville", "chaleira", "garrafa termica"]},
+      {"nome": "Oster", "url": "https://www.oster.com.br", "prefixo": "ost", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "chaleira"]},
+      {"nome": "Electrolux", "url": "https://loja.electrolux.com.br", "prefixo": "elx", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "chaleira"]},
+      {"nome": "Britânia", "url": "https://www.britania.com.br", "prefixo": "bri", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "chaleira"]},
+      {"nome": "Philco", "url": "https://www.philco.com.br", "prefixo": "phi", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "chaleira"]},
+      {"nome": "Mondial", "url": "https://www.mondial.com.br", "prefixo": "mon", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "chaleira"]},
+      {"nome": "Arno", "url": "https://www.arno.com.br", "prefixo": "arn", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "chaleira"]},
+      {"nome": "Melitta", "url": "https://www.melitta.com.br", "prefixo": "mel", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "cafe em graos", "chaleira", "garrafa termica", "jarra"]},
+      {"nome": "Cadence", "url": "https://www.cadence.com.br", "prefixo": "cad", "queda_minima_pct": 10, "buscas": ["cafeteira", "moedor", "espresso", "chaleira"]}
     ]
   },
   "criterios": {"abaixo_do_mercado_pct": 15, "queda_historico_pct": 5, "avisar_relampago_sem_comparacao": true},
-  "palavras_chave": ["cafe", "cafes", "cafeteira", "espresso", "expresso", "moedor de cafe", "moedor manual", "tamper", "pitcher", "leiteira", "porta filtro", "portafiltro", "v60", "hario", "chemex", "aeropress", "prensa francesa", "moka", "bialetti", "nespresso", "dolce gusto", "chaleira bico de ganso", "graos", "barista", "kit barista", "balanca de cafe", "jarra de leite", "nivelador de cafe", "distribuidor de cafe", "wdt", "knock box", "escova de grupo", "pano barista", "termometro de leite"],
+  "palavras_chave": ["cafe", "cafes", "cafeteira", "espresso", "expresso", "moedor de cafe", "moedor manual", "tamper", "pitcher", "leiteira", "porta filtro", "portafiltro", "v60", "hario", "chemex", "aeropress", "prensa francesa", "moka", "bialetti", "nespresso", "dolce gusto", "chaleira bico de ganso", "graos", "barista", "kit barista", "balanca de cafe", "jarra de leite", "nivelador de cafe", "distribuidor de cafe", "wdt", "knock box", "escova de grupo", "pano barista", "termometro de leite", "chaleira", "chaleiras", "bule", "garrafa termica", "jarra de cafe", "jarra termica", "jarra de vidro", "servidor de cafe", "server de cafe", "coffee server", "jarra servidora", "coador", "suporte de coador", "filtro de papel"],
   "palavras_relampago": ["relampago", "por tempo limitado", "so hoje", "corre", "ultimas unidades", "bug"],
-  "excluir": ["mesa de cafe", "pimenta", "moedor de carne", "capa", "camiseta", "caneca", "achocolatado", "curso", "workshop", "assinatura", "terapia", "vale presente", "gift card"],
+  "excluir": ["mesa de cafe", "pimenta", "moedor de carne", "capa", "camiseta", "caneca", "achocolatado", "curso", "workshop", "assinatura", "terapia", "vale presente", "gift card", "liquidificador", "mixer"],
   "lista_de_desejos": [
     {"nome": "Gaggia Classic (Evo Pro / E24)", "termos": ["gaggia", "classic"], "excluir": ["mola", "opv", "chuveiro", "gaxeta", "sem fundo", "cesto", "peca", "pecas", "vedacao", "manometro", "capa"], "preco_min": 2000, "preco_max": 3700},
     {"nome": "Moedor Kingrinder", "termos": ["kingrinder"], "preco_max": 450},
