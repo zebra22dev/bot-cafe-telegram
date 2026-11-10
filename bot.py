@@ -5,13 +5,15 @@ dezenas de lojas e torrefações (Shopify, Nuvemshop, WooCommerce, VTEX)
 e buscas no AliExpress, KaBuM! e lojas VTEX (Americanas, WebContinental...).
 Também manda um radar diário com o menor preço das máquinas que você está de olho
 e avisa de cursos de barista, cupping e eventos de café (Sympla, Hotmart e escolas).
+Filtro de marca: só passam produtos de marcas listadas em marcas.json; o que for barrado
+por marca fica registrado em rejeitados.json para revisão.
 Só avisa quando a oferta realmente compensa:
   - preço bem abaixo do menor preço encontrado no Buscapé, ou
   - menor preço que o bot já viu para aquele produto, ou
   - produto da sua lista de desejos abaixo do preço máximo.
 Ofertas relâmpago ganham ⚡ na mensagem.
 """
-import html, json, os, re, statistics, sys, time, unicodedata, urllib.parse
+import difflib, html, json, os, re, statistics, sys, time, unicodedata, urllib.parse
 from datetime import date, datetime, timedelta, timezone
 import requests
 
@@ -63,7 +65,7 @@ def fonte_promobit(url):
             continue
         out.append({"id": f"promobit-{o['offerId']}", "titulo": o.get("offerTitle", ""),
                     "preco": float(o["offerPrice"]), "loja": o.get("storeName", ""),
-                    "cupom": o.get("offerCoupon"), "texto": o.get("offerTitle", ""),
+                    "cupom": o.get("offerCoupon"), "texto": o.get("offerTitle", ""), "marca": o.get("storeName", ""),
                     "link": f"https://www.promobit.com.br/oferta/{o['offerSlug']}/"})
     return out
 
@@ -119,6 +121,7 @@ def fonte_shopify(loja):
                 nome = p["title"] + ("" if v["title"] == "Default Title" else f" ({v['title']})")
                 out.append({"id": f"loja-{dominio}-{v['id']}-{preco}-{antes}", "chave_loja": f"loja:{dominio}:{v['id']}",
                             "titulo": nome, "preco": preco, "preco_antes": antes, "loja": loja["nome"],
+                            "marca": p.get("vendor") or "",
                             "cupom": None, "texto": nome, "desconto_minimo": loja.get("desconto_minimo", 15),
                             "link": f"{base}/products/{p['handle']}?variant={v['id']}"})
         pagina += 1
@@ -181,6 +184,7 @@ def fonte_vtex_busca(loja, busca):
             out.append({"id": f"{pref}-{p['productId']}-{preco}", "chave_loja": f"{pref}:{p['productId']}",
                         "titulo": p.get("productName", "")[:150], "preco": preco, "preco_antes": None,
                         "loja": loja["nome"], "cupom": None, "texto": p.get("productName", ""),
+                        "marca": p.get("brand") or "",
                         "desconto_minimo": 100, "queda_min": loja.get("queda_minima_pct", 10),
                         "link": p.get("link", "")})
     time.sleep(1)
@@ -205,6 +209,7 @@ def fonte_kabum(busca, queda_min):
         out.append({"id": f"kabum-{p['code']}-{preco}", "chave_loja": f"kabum:{p['code']}",
                     "titulo": p.get("name", "")[:150], "preco": preco, "preco_antes": None,
                     "loja": "KaBuM! (PIX)", "cupom": None, "texto": p.get("name", ""),
+                    "marca": (p.get("manufacturer") or {}).get("name", "") if isinstance(p.get("manufacturer"), dict) else "",
                     "desconto_minimo": 100, "queda_min": queda_min, "relampago": bool(p.get("offer")),
                     "link": f"https://www.kabum.com.br/produto/{p['code']}/{p.get('friendlyName', '')}"})
     time.sleep(1)
@@ -215,15 +220,20 @@ def fonte_loja(loja):
     """Lê o catálogo inteiro de uma loja (Shopify, Nuvemshop, WooCommerce ou VTEX)."""
     funcoes = {"shopify": fonte_shopify, "nuvemshop": fonte_nuvemshop,
                "woocommerce": fonte_woocommerce, "vtex": fonte_vtex}
-    return funcoes[loja.get("plataforma", "shopify")](loja)
+    itens = funcoes[loja.get("plataforma", "shopify")](loja)
+    if loja.get("marca_propria"):  # torrefação com loja própria: a loja é a marca
+        for o in itens:
+            o["marca"] = (o.get("marca") or "") + " " + loja["nome"]
+    return itens
 
 
-def _item_loja(loja, pid, titulo, preco, antes, link):
+def _item_loja(loja, pid, titulo, preco, antes, link, marca=""):
     base = loja["url"].rstrip("/")
     dominio = re.sub(r"^https?://(www\.)?", "", base)
     return {"id": f"loja-{dominio}-{pid}-{preco}-{antes}", "chave_loja": f"loja:{dominio}:{pid}",
             "titulo": titulo[:150], "preco": preco, "preco_antes": antes, "loja": loja["nome"],
-            "cupom": None, "texto": titulo, "desconto_minimo": loja.get("desconto_minimo", 15), "link": link}
+            "cupom": None, "texto": titulo, "desconto_minimo": loja.get("desconto_minimo", 15), "link": link,
+            "marca": marca}
 
 
 def fonte_nuvemshop(loja):
@@ -296,7 +306,7 @@ def fonte_vtex(loja):
             o = min(ofertas, key=lambda x: x["Price"])
             antes = o.get("ListPrice") if o.get("ListPrice", 0) > o["Price"] else None
             out.append(_item_loja(loja, p["productId"], p.get("productName", ""), float(o["Price"]),
-                                  float(antes) if antes else None, p.get("link", base)))
+                                  float(antes) if antes else None, p.get("link", base), p.get("brand") or ""))
         time.sleep(1)
     return out
 
@@ -410,6 +420,116 @@ def avaliar(oferta, cfg, historico):
         return {"tipo": "geral", "motivo": "\n".join(motivos) or "⚡ relâmpago (sem preço de referência)",
                 "relampago": relampago}
     return None
+
+
+# ---------- relevância de marca ----------
+MARCAS_ARQ = os.path.join(PASTA, "marcas.json")
+REJEITADOS = os.path.join(PASTA, "rejeitados.json")
+_SEP = r"[\s\-_.'’/+&]*"
+GENERICAS = {"moedor", "moinho", "cafe", "cafeteira", "maquina", "kit", "tamper", "balanca", "chaleira", "jarra",
+             "pitcher", "coador", "filtro", "garrafa", "eletrica", "eletrico", "manual", "portatil", "profissional",
+             "inox", "aco", "novo", "nova", "original", "mini", "para", "com", "de", "do", "da", "em", "e", "expresso",
+             "espresso", "italiana", "termica", "digital", "automatica", "automatico", "copo", "conjunto", "suporte",
+             "porta", "distribuidor", "nivelador", "leite", "graos", "capsulas", "capsula", "torrado", "moido",
+             "moka", "prensa", "francesa", "litros", "litro", "multifuncional", "desligamento", "aquecimento", "auto",
+             "premium", "rapido", "xicaras", "vidro", "plastico", "design", "cor", "jogo", "pastilha", "bule", "servidor",
+             "frasco", "inoxidavel", "termico", "unidade", "unidades", "aprimorada", "isolado", "vacuo", "agua"}
+
+def _rx(apelido):
+    partes = re.findall(r"[a-z0-9]+", norm(apelido))
+    if not partes:
+        return None
+    return re.compile(r"(?<![a-z0-9])" + _SEP.join(map(re.escape, partes)) + r"(?![a-z0-9])")
+
+def carregar_marcas():
+    """Lê marcas.json e prepara os padrões de busca. Sem o arquivo, o filtro fica desligado."""
+    if not os.path.exists(MARCAS_ARQ):
+        return None
+    bruto = json.load(open(MARCAS_ARQ, encoding="utf-8"))
+    m = {"padroes": [], "fuzzy": {}, "bloqueio": [], "ambiguos": []}
+    for categoria, marcas in bruto.get("categorias", {}).items():
+        for marca, apelidos in marcas.items():
+            for ap in [marca] + list(apelidos):
+                if "(" in ap:  # nomes com parênteses são só rótulo; valem os apelidos
+                    continue
+                rx = _rx(ap)
+                if rx:
+                    m["padroes"].append((rx, marca, categoria))
+                compacto = re.sub(r"[^a-z0-9]", "", norm(ap))
+                if len(compacto) >= 7 and compacto.isalpha() and categoria in ("moedores", "maquinas_espresso", "cafeteiras_metodos", "tampers_acessorios", "balancas", "chaleiras"):
+                    m["fuzzy"][compacto] = (marca, categoria)
+    m["bloqueio"] = [(r, b) for b in bruto.get("bloqueio", []) for r in [_rx(b)] if r]
+    for a in bruto.get("modelos_ambiguos", []):
+        rx = _rx(a["modelo"])
+        if rx:
+            m["ambiguos"].append((rx, a["marca"], [norm(x) for x in a.get("exige", [])]))
+    return m
+
+_COMPAT = re.compile(r"\b(compativel|compativeis|adequad[oa]s?|compatible|fits?)\b|\b(para|for|p/)\s+(as?\s+|os?\s+)?(maquinas?|cafeteiras?|e61)\b")
+_PARA = re.compile(r"\b(para|for|p/)\s+$")
+CATS_CAFE = ("torrefacoes_cafes", "cafes_de_mercado")
+
+def detectar_marca(oferta, m):
+    """Devolve (marca, categoria), ('BLOQUEADA', nome) ou (None, None).
+    'Tamper para Breville' ou 'cápsula compatível com Nespresso' NÃO contam como Breville/Nespresso."""
+    texto = norm((oferta.get("marca") or "") + " | " + oferta.get("titulo", ""))
+    for rx, nome in m["bloqueio"]:
+        if rx.search(texto):
+            return "BLOQUEADA", nome
+    c = _COMPAT.search(texto)
+    corte = c.start() if c else len(texto)
+    achados = [(a.start(), marca, categoria) for rx, marca, categoria in m["padroes"] for a in rx.finditer(texto)]
+    for inicio, marca, categoria in achados:  # "... para <marca>": daí em diante é compatibilidade
+        if categoria not in CATS_CAFE and _PARA.search(texto[:inicio]):
+            corte = min(corte, inicio)
+    for inicio, marca, categoria in sorted(achados, key=lambda x: x[0]):
+        if inicio < corte or categoria in CATS_CAFE:
+            return marca, categoria
+    valido = texto[:corte]
+    for rx, marca, exige in m["ambiguos"]:
+        if rx.search(valido) and any(tem(valido, x) for x in exige):
+            return marca, "modelo"
+    for palavra in set(re.findall(r"[a-z]{6,}", valido)):  # erro de digitação: "commandante", "timemor"
+        for alvo, (marca, categoria) in m["fuzzy"].items():
+            if alvo[0] == palavra[0] and abs(len(alvo) - len(palavra)) <= 1 and \
+                    difflib.SequenceMatcher(None, alvo, palavra).ratio() >= 0.9:
+                return marca, categoria
+    return None, None
+
+def possivel_marca(titulo):
+    """Chute da marca num título não reconhecido (para facilitar a sua revisão)."""
+    for palavra in re.findall(r"[A-Za-zÀ-ÿ0-9][A-Za-zÀ-ÿ0-9\-+&']+", titulo or ""):
+        if norm(palavra) not in GENERICAS and not palavra.isdigit() and len(palavra) > 2 and palavra[0].isupper():
+            return palavra
+    return ""
+
+def registrar_rejeitado(rejeitados, oferta, motivo):
+    chave = chave_produto(oferta["titulo"])
+    for r in rejeitados:
+        if r["chave"] == chave:
+            r["vezes"] += 1; r["preco"] = oferta["preco"]; r["data"] = date.today().isoformat(); r["link"] = oferta["link"]
+            return
+    rejeitados.append({"data": date.today().isoformat(), "motivo": motivo, "possivel_marca": possivel_marca(oferta["titulo"]),
+                       "titulo": oferta["titulo"], "loja": oferta.get("loja", ""), "preco": oferta["preco"],
+                       "link": oferta["link"], "vezes": 1, "novo": True, "chave": chave})
+
+def resumo_rejeitados(rejeitados, estado):
+    """Uma vez por dia (com o radar), lista o que foi barrado por marca desde o último resumo."""
+    agora = datetime.now(timezone(timedelta(hours=-3)))
+    if agora.hour < 9 or estado.get("rejeitados_resumo") == agora.date().isoformat():
+        return None
+    estado["rejeitados_resumo"] = agora.date().isoformat()
+    novos = [r for r in rejeitados if r.get("novo")]
+    for r in novos:
+        r["novo"] = False
+    if not novos:
+        return None
+    linhas = [f"🚫 {len(novos)} oferta(s) barrada(s) por marca desde ontem (lista completa em rejeitados.json):"]
+    for r in novos[:10]:
+        marca = f" [marca? {r['possivel_marca']}]" if r["possivel_marca"] else ""
+        linhas.append(f"\n• {r['titulo'][:80]}{marca}\n  R$ {r['preco']:.2f} – {r['loja']}")
+    linhas.append("\nSe alguma marca for boa, adicione em marcas.json (ou me peça).")
+    return "\n".join(linhas)
 
 
 # ---------- envio (Telegram) ----------
@@ -615,6 +735,9 @@ def main():
     primeira = not os.path.exists(ESTADO)
     estado = {"vistos": [], "historico": {}} if primeira else json.load(open(ESTADO, encoding="utf-8"))
     ja_vi = set(estado["vistos"])
+    marcas = carregar_marcas()
+    rejeitados = json.load(open(REJEITADOS, encoding="utf-8")) if os.path.exists(REJEITADOS) else []
+    barradas = 0
     chat = descobrir_chat(estado)
 
     coletadas = []
@@ -647,6 +770,13 @@ def main():
             continue
         ja_vi.add(o["id"]); estado["vistos"].append(o["id"])
         av = avaliar(o, cfg, estado["historico"])
+        if av and marcas and av["tipo"] != "alvo":  # lista de desejos não passa pelo filtro de marca
+            nome_marca, detalhe = detectar_marca(o, marcas)
+            if nome_marca is None or nome_marca == "BLOQUEADA":
+                if not primeira:
+                    registrar_rejeitado(rejeitados, o, f"marca bloqueada: {detalhe}" if nome_marca else "marca não reconhecida")
+                barradas += 1
+                av = None
         marca = (chave_produto(o["titulo"]), round(o["preco"]))
         if av and not primeira and marca not in repetidas:
             repetidas.add(marca)
@@ -654,6 +784,7 @@ def main():
 
     atualizar_radar(coletadas, cfg, estado)
     resumo = None if primeira else resumo_radar(cfg, estado)
+    resumo_rej = None if primeira else resumo_rejeitados(rejeitados, estado)
     try:
         cursos = mensagens_cursos(cfg, estado, coletadas)
     except Exception as e:
@@ -665,11 +796,15 @@ def main():
         enviar(t, chat)
     if resumo:
         enviar(html.escape(resumo, quote=False), chat)
+    if resumo_rej:
+        enviar(html.escape(resumo_rej, quote=False), chat)
     for c in cursos:
         enviar(html.escape(c, quote=False), chat)
 
     estado["vistos"] = estado["vistos"][-20000:]
     json.dump(estado, open(ESTADO, "w", encoding="utf-8"), ensure_ascii=False)
+    json.dump(rejeitados[-400:], open(REJEITADOS, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print(f"{barradas} barradas por marca")
     print(f"{len(coletadas)} coletadas, {len(textos)} enviadas" + (" (1ª execução: só aprendendo)" if primeira else ""))
 
 
