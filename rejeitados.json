@@ -274,5 +274,65 @@
   "vezes": 1,
   "novo": true,
   "chave": "300ml cafeteira expresso italiana moka xicaras"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Kit Garrafa Térmica Conjunto Frasco A Vácuo 500ml Com 3 Xícaras",
+  "loja": "AliExpress",
+  "preco": 11.99,
+  "link": "https://pt.aliexpress.com/item/1005007516198836.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "500ml conjunto frasco garrafa termica vacuo"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Atividades",
+  "titulo": "Garrafa Térmica Portátil de 800ML para Atividades ao Ar Livre com Filtro de Chá, Copo Térmico de Aço Inoxidável, Garrafa à Prova de Vazamentos para Es",
+  "loja": "AliExpress",
+  "preco": 21.46,
+  "link": "https://pt.aliexpress.com/item/1005011959452866.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "800ml ao atividades garrafa portatil termica"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "SoftAura",
+  "titulo": "Garrafa Térmica SoftAura de Aço Inoxidável com Display LED de Temperatura 500ML-1L, Copo Portátil a Vácuo SUS304, Novo 2026",
+  "loja": "AliExpress",
+  "preco": 43.82,
+  "link": "https://pt.aliexpress.com/item/1005007805644243.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "aco display garrafa inoxidavel softaura termica"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "400ml drinkware margarida garrafa de água personalizada garrafa térmica de aço inoxidável itens de bebida frascos de vácuo simples das mulheres dos ho",
+  "loja": "AliExpress",
+  "preco": 9.04,
+  "link": "https://pt.aliexpress.com/item/1005007614753436.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "400ml agua drinkware garrafa margarida personalizada"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Chá",
+  "titulo": "Copo Térmico Isolado a Vácuo de 800ml, Garrafa de Água em Aço Inoxidável 304 com Filtro para Chá, Garrafa Esportiva à Prova de Vazamentos para Ativida",
+  "loja": "AliExpress",
+  "preco": 22.02,
+  "link": "https://pt.aliexpress.com/item/1005013104864603.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "800ml copo garrafa isolado termico vacuo"
  }
 ]
