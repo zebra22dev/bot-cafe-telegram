@@ -293,9 +293,9 @@
   "possivel_marca": "Atividades",
   "titulo": "Garrafa Térmica Portátil de 800ML para Atividades ao Ar Livre com Filtro de Chá, Copo Térmico de Aço Inoxidável, Garrafa à Prova de Vazamentos para Es",
   "loja": "AliExpress",
-  "preco": 21.46,
-  "link": "https://pt.aliexpress.com/item/1005011959452866.html",
-  "vezes": 1,
+  "preco": 22.83,
+  "link": "https://pt.aliexpress.com/item/1005011956268971.html",
+  "vezes": 2,
   "novo": false,
   "chave": "800ml ao atividades garrafa portatil termica"
  },
@@ -317,9 +317,9 @@
   "possivel_marca": "",
   "titulo": "400ml drinkware margarida garrafa de água personalizada garrafa térmica de aço inoxidável itens de bebida frascos de vácuo simples das mulheres dos ho",
   "loja": "AliExpress",
-  "preco": 9.04,
+  "preco": 6.99,
   "link": "https://pt.aliexpress.com/item/1005007614753436.html",
-  "vezes": 1,
+  "vezes": 2,
   "novo": false,
   "chave": "400ml agua drinkware garrafa margarida personalizada"
  },
@@ -514,5 +514,41 @@
   "vezes": 1,
   "novo": true,
   "chave": "balanca balanca cafe cozinha digital eletronica"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "SUS316",
+  "titulo": "Garrafa Térmica de Aço Inoxidável SUS316 500ml/600ml com Alça para Bebidas Quentes e Frias para Atividades ao Ar Livre",
+  "loja": "AliExpress",
+  "preco": 38.9,
+  "link": "https://pt.aliexpress.com/item/1005011877070739.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "500ml aco garrafa inoxidavel sus316 termica"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "350ml 304 copo térmico de aço inoxidável portátil ao ar livre de dois andares garrafa de água esportiva xícara de café",
+  "loja": "AliExpress",
+  "preco": 81.9,
+  "link": "https://pt.aliexpress.com/item/1005007044988312.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "304 350ml aco copo inoxidavel termico"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Garrafa de água isolada de aço inoxidável 304, 620/720ml, copo de gelo para carro, copo térmico de palha, copo de café, copo de vácuo frio e quente",
+  "loja": "AliExpress",
+  "preco": 62.2,
+  "link": "https://pt.aliexpress.com/item/1005009578284745.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "304 aco agua garrafa inoxidavel isolada"
  }
 ]
