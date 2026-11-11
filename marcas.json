@@ -361,6 +361,16 @@
       "Le Creuset": [],
       "Luigi Bormioli": ["bormioli"],
       "Bodum": []
+    },
+    "marcas_aliexpress": {
+      "HiBREW": ["hi brew", "h10a", "h10b", "h10plus", "h7a", "h5 hibrew"],
+      "IKAPE": ["i kape", "kapo k2"],
+      "MUVNA": ["muvna tornado", "muvna titan"],
+      "zeroHero": ["zero hero", "heropresso"],
+      "Bincoo": [],
+      "Cafe de Kona": ["cafede kona", "cafe de kona"],
+      "Gemilai": ["crm3605"],
+      "ITOP": ["itop mc"]
     }
   },
   "modelos_ambiguos": [
