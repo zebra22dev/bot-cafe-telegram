@@ -269,9 +269,9 @@
   "possivel_marca": "Mais",
   "titulo": "Cafeteira Italiana Moka Expresso Inox 300ml Para 6 Xícaras, Café Mais Encorpado, Intenso E Aromático, Preparo Rápido Sem Filtro, Design Clássico,",
   "loja": "Amazon",
-  "preco": 47.4,
-  "link": "https://www.promobit.com.br/oferta/cafeteira-italiana-moka-expresso-inox-300ml-para-6-xicaras-cafe-mais-encorpado-intenso-e-aromatico-preparo-rapido-sem-filtro-design-classico-3178276/",
-  "vezes": 1,
+  "preco": 37.99,
+  "link": "https://www.promobit.com.br/oferta/cafeteira-italiana-moka-expresso-inox-300ml-para-6-xicaras-cafe-mais-encorpado-intenso-e-aromatico-preparo-rapido-sem-filtro-design-classico-3148836/",
+  "vezes": 2,
   "novo": false,
   "chave": "300ml cafeteira expresso italiana moka xicaras"
  },
@@ -430,5 +430,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "aco agitar manual mao mini moagem"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "HTMCK",
+  "titulo": "HTMCK – Ferramenta WDT para mexer o café expresso, compatível com portafiltros de 51 mm a 58 mm – Ferramenta para distribuir e misturar o pó de café.",
+  "loja": "AliExpress",
+  "preco": 11.78,
+  "link": "https://pt.aliexpress.com/item/1005007038128214.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe expresso ferramenta htmck mexer wdt"
  }
 ]
