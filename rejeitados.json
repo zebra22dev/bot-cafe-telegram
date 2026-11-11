@@ -226,5 +226,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe eletrico graos moedor multifuncional temperos"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Portafiltro",
+  "titulo": "Portafiltro sem fundo de 54 mm, com suporte para filtro de café, cabo em aço inoxidável, para uso em máquinas de café expresso e por baristas.",
+  "loja": "AliExpress",
+  "preco": 126.59,
+  "link": "https://pt.aliexpress.com/item/1005013485853496.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "54 fundo mm portafiltro sem suporte"
  }
 ]
