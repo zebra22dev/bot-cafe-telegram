@@ -562,5 +562,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe cafe distribuicao distribuidor expresso ferramenta"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "ESSA",
+  "titulo": "🖤 Cafeteira Elétrica 15 🔝 ESSA FAZ O CAFÉ RÁPIDINHO☕",
+  "loja": "Telegram @pechinchou",
+  "preco": 69.0,
+  "link": "https://pechin.co/118066",
+  "vezes": 1,
+  "novo": true,
+  "chave": "15 cafe cafeteira eletrica essa faz"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Balança cozinha alta precisão Balança de cozinha de alta precisão, 10kg, joias eletrônicas, balança de cozimento de alimentos, ferramenta de medição m",
+  "loja": "AliExpress",
+  "preco": 40.91,
+  "link": "https://pt.aliexpress.com/item/1005009889707923.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "alta balanca balanca cozinha cozinha precisao"
  }
 ]
