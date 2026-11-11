@@ -446,7 +446,7 @@ def carregar_marcas():
     if not os.path.exists(MARCAS_ARQ):
         return None
     bruto = json.load(open(MARCAS_ARQ, encoding="utf-8"))
-    m = {"padroes": [], "fuzzy": {}, "bloqueio": [], "ambiguos": []}
+    m = {"padroes": [], "fuzzy": {}, "bloqueio": [], "ambiguos": [], "compat": None}
     for categoria, marcas in bruto.get("categorias", {}).items():
         for marca, apelidos in marcas.items():
             for ap in [marca] + list(apelidos):
@@ -463,6 +463,10 @@ def carregar_marcas():
         rx = _rx(a["modelo"])
         if rx:
             m["ambiguos"].append((rx, a["marca"], [norm(x) for x in a.get("exige", [])]))
+    ac = bruto.get("acessorios_compativeis")
+    if ac:
+        m["compat"] = {"termos": [norm(x) for x in ac.get("termos", [])], "categorias": set(ac.get("categorias_validas", [])),
+                       "padroes": [norm(x) for x in ac.get("padroes_universais", [])]}
     return m
 
 _COMPAT = re.compile(r"\b(compativel|compativeis|adequad[oa]s?|compatible|fits?)\b|\b(para|for|p/)\s+(as?\s+|os?\s+)?(maquinas?|cafeteiras?|e61)\b")
@@ -471,7 +475,9 @@ CATS_CAFE = ("torrefacoes_cafes", "cafes_de_mercado")
 
 def detectar_marca(oferta, m):
     """Devolve (marca, categoria), ('BLOQUEADA', nome) ou (None, None).
-    'Tamper para Breville' ou 'cápsula compatível com Nespresso' NÃO contam como Breville/Nespresso."""
+    'Tamper para Breville' ou 'cápsula compatível com Nespresso' NÃO contam como Breville/Nespresso.
+    Mas acessório de máquina (porta-filtro, cesto, tamper...) feito para uma marca reconhecida passa
+    como ('compatível com Breville', 'acessorio_compativel')."""
     texto = norm((oferta.get("marca") or "") + " | " + oferta.get("titulo", ""))
     for rx, nome in m["bloqueio"]:
         if rx.search(texto):
@@ -494,6 +500,14 @@ def detectar_marca(oferta, m):
             if alvo[0] == palavra[0] and abs(len(alvo) - len(palavra)) <= 1 and \
                     difflib.SequenceMatcher(None, alvo, palavra).ratio() >= 0.9:
                 return marca, categoria
+    ac = m.get("compat")
+    if ac and any(tem(texto, t) for t in ac["termos"]):
+        for inicio, marca, categoria in sorted(achados, key=lambda x: x[0]):
+            if categoria in ac["categorias"]:
+                return f"compatível com {marca}", "acessorio_compativel"
+        for padrao in ac["padroes"]:  # ex.: grupo E61, usado por dezenas de máquinas
+            if tem(texto, padrao):
+                return f"compatível com {padrao.upper()}", "acessorio_compativel"
     return None, None
 
 def possivel_marca(titulo):

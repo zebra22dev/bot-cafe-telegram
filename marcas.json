@@ -373,6 +373,12 @@
       "ITOP": ["itop mc"]
     }
   },
+  "acessorios_compativeis": {
+    "_explicacao": "Acessórios sem marca própria passam se forem feitos PARA uma marca reconhecida (ex.: 'Portafiltro sem fundo para Breville'). Edite os termos ou as categorias de marcas aceitas.",
+    "termos": ["portafiltro", "porta filtro", "portafilter", "porta-filtro", "cesto", "cesta", "filtro sem fundo", "sem fundo", "tamper", "compactador", "calcador", "distribuidor", "nivelador", "wdt", "funil", "dosador", "anel dosador", "puck screen", "tela de dispersao", "chuveiro", "junta", "gaxeta", "vedacao", "bico vaporizador", "steam wand", "manometro", "mola opv", "knock box", "base de tamper", "suporte de tamper", "suporte para portafiltro"],
+    "categorias_validas": ["maquinas_espresso", "moedores", "marcas_aliexpress", "populares"],
+    "padroes_universais": ["e61"]
+  },
   "modelos_ambiguos": [
     {"modelo": "k6", "marca": "Kingrinder", "exige": ["moedor", "moinho", "grinder"]},
     {"modelo": "k4", "marca": "Kingrinder", "exige": ["moedor", "moinho", "grinder"]},
