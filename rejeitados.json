@@ -358,5 +358,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe distribuidor distribuidor espresso gravidade por"
+ },
+ {
+  "data": "2026-11-11",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Bico",
+  "titulo": "Chaleira de Café com Bico Gooseneck em Aço Inoxidável 304 e Cabo de Nogueira",
+  "loja": "AliExpress",
+  "preco": 58.79,
+  "link": "https://pt.aliexpress.com/item/1005012155549833.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "aco bico cafe chaleira gooseneck inoxidavel"
  }
 ]
