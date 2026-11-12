@@ -730,5 +730,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "alimentos balanca balanca balanca cozinha digital"
+ },
+ {
+  "data": "2026-11-12",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Base",
+  "titulo": "Tamper Base Plana/Roscada Tamper de Café 51/53/58MM com Molas de Retorno Automático, Nivelador de Café com Cabo de Madeira, Base Plana/Roscada, Prensa",
+  "loja": "AliExpress",
+  "preco": 28.41,
+  "link": "https://pt.aliexpress.com/item/1005011708287830.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "base cafe plana roscada tamper tamper"
+ },
+ {
+  "data": "2026-11-12",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Jarro",
+  "titulo": "Jarro manual de espuma de leite, 5/12oz, aço inoxidável, portátil, espuma de leite, para cappuccino, latte, arte, uso doméstico, escritório, café, sup",
+  "loja": "AliExpress",
+  "preco": 15.98,
+  "link": "https://pt.aliexpress.com/item/1005010443653095.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "12oz aco espuma jarro leite manual"
  }
 ]
