@@ -622,5 +622,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "591ml aerolight garrafa quartz rose termica"
+ },
+ {
+  "data": "2026-11-12",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "MODUS",
+  "titulo": "MODUS Garrafa Térmica Aço Inoxidável 950ml",
+  "loja": "Amazon",
+  "preco": 57.49,
+  "link": "https://www.promobit.com.br/oferta/modus-garrafa-termica-aco-inoxidavel-950ml-3204460/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "950ml aco garrafa inoxidavel modus termica"
+ },
+ {
+  "data": "2026-11-12",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "WDT",
+  "titulo": "Espresso WDT Ferramenta Agitador Espresso para Agitador de Café em Pó, Ferramenta de Distribuição para Portafilter, WDT, 51mm, 54mm, 53mm, 58mm",
+  "loja": "AliExpress",
+  "preco": 19.91,
+  "link": "https://pt.aliexpress.com/item/1005006867957432.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "agitador agitador espresso espresso ferramenta wdt"
  }
 ]
