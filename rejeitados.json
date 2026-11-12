@@ -754,5 +754,17 @@
   "vezes": 1,
   "novo": false,
   "chave": "12oz aco espuma jarro leite manual"
+ },
+ {
+  "data": "2026-11-12",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Inclinações",
+  "titulo": "Tamper Distribuidor de Café Espresso, Nivelador com 3 Inclinações Ajustáveis, Compactador de Palma Compatível com Porta-Filtro 51/53/58mm Nivelador de",
+  "loja": "AliExpress",
+  "preco": 6.99,
+  "link": "https://pt.aliexpress.com/item/1005013283394710.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe distribuidor espresso inclinacoes nivelador tamper"
  }
 ]
