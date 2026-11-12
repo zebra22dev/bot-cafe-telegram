@@ -766,5 +766,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe distribuidor espresso inclinacoes nivelador tamper"
+ },
+ {
+  "data": "2026-11-12",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Compactador",
+  "titulo": "Compactador de Pó de Café em Aço Inoxidável, Misturador de Pó de Café Concentrado, Distribuidor, Nivelador, Ferramenta WDT, Agitador de Café, Baris",
+  "loja": "AliExpress",
+  "preco": 5.99,
+  "link": "https://pt.aliexpress.com/item/1005010530057476.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "aco cafe compactador inoxidavel misturador po"
  }
 ]
