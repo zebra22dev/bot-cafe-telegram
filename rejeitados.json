@@ -946,5 +946,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "alca cafe cafe jarra preparo vidro"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Espumar",
+  "titulo": "Jarra de Aço Inoxidável para Espumar Leite com Escala Interna, Jarra para Vaporizar Leite para Espresso, para Preparar Latte e Cappuccino em Casa e Ca",
+  "loja": "AliExpress",
+  "preco": 19.71,
+  "link": "https://pt.aliexpress.com/item/1005007037957729.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "aco escala espumar inoxidavel jarra leite"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Jarra para espuma de leite em aço inoxidável, 350ml, display de temperatura, batedor de leite, copo para latte art barista, cozinha",
+  "loja": "AliExpress",
+  "preco": 15.99,
+  "link": "https://pt.aliexpress.com/item/1005007038348277.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "350ml aco espuma inoxidavel jarra leite"
  }
 ]
