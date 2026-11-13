@@ -1042,5 +1042,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "casal espresso guarda moveis portas roupa"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Jarro",
+  "titulo": "Jarro de espuma de leite e café, remendo de detecção de temperatura, escala precisa de aço inoxidável, controle de volume, ferramenta de café profissi",
+  "loja": "AliExpress",
+  "preco": 17.87,
+  "link": "https://pt.aliexpress.com/item/1005009916238382.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe deteccao espuma jarro leite remendo"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Jarra de espuma de leite e café, 100/150/350/600ml, arte latte, espuma de leite, jarro de medição de aço inoxidável, acessório de café",
+  "loja": "AliExpress",
+  "preco": 10.04,
+  "link": "https://pt.aliexpress.com/item/1005008647571681.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "100 150 cafe espuma jarra leite"
  }
 ]
