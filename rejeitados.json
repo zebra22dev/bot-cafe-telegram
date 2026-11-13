@@ -264,14 +264,14 @@
   "chave": "aco bico cafe chaleira gotejamento inoxidavel"
  },
  {
-  "data": "2026-11-11",
+  "data": "2026-11-13",
   "motivo": "marca não reconhecida",
   "possivel_marca": "Mais",
   "titulo": "Cafeteira Italiana Moka Expresso Inox 300ml Para 6 Xícaras, Café Mais Encorpado, Intenso E Aromático, Preparo Rápido Sem Filtro, Design Clássico,",
   "loja": "Amazon",
-  "preco": 37.99,
-  "link": "https://www.promobit.com.br/oferta/cafeteira-italiana-moka-expresso-inox-300ml-para-6-xicaras-cafe-mais-encorpado-intenso-e-aromatico-preparo-rapido-sem-filtro-design-classico-3148836/",
-  "vezes": 2,
+  "preco": 47.4,
+  "link": "https://www.promobit.com.br/oferta/cafeteira-italiana-moka-expresso-inox-300ml-para-6-xicaras-cafe-mais-encorpado-intenso-e-aromatico-preparo-rapido-sem-filtro-design-classico-3178276/",
+  "vezes": 3,
   "novo": false,
   "chave": "300ml cafeteira expresso italiana moka xicaras"
  },
@@ -1030,5 +1030,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "arte cafe espuma jarra latte leite"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Guarda",
+  "titulo": "Guarda Roupa Casal 8 Portas Preto Espresso Móveis 4 Gavetas MDF 200x237x47cm",
+  "loja": "Mercado Livre",
+  "preco": 769.9,
+  "link": "https://www.promobit.com.br/oferta/guarda-roupa-casal-8-portas-preto-espresso-moveis-4-gavetas-mdf-200x237x47cm-3210833/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "casal espresso guarda moveis portas roupa"
  }
 ]
