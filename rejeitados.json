@@ -922,5 +922,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe divertida espumar jarra leite mini"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Display",
+  "titulo": "Balança de Café Mini com Display LED, Carregamento USB, Portátil, Alta Precisão, Acessórios Profissionais para Café em Casa",
+  "loja": "AliExpress",
+  "preco": 71.24,
+  "link": "https://pt.aliexpress.com/item/1005011692679651.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "balanca cafe carregamento display led mini"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Alça",
+  "titulo": "Jarra de Vidro para Café com Alça para Preparo de Café e Chá - 300ml/600ml, Segura para Micro-ondas, Corpo de Vidro Espesso Resistente ao Calor",
+  "loja": "AliExpress",
+  "preco": 26.16,
+  "link": "https://pt.aliexpress.com/item/1005012177088485.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "alca cafe cafe jarra preparo vidro"
  }
 ]
