@@ -862,5 +862,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "400g america cafe cappuccino normal preco"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Moderna",
+  "titulo": "Jarra de Leite de Aço Inoxidável Moderna 100/350/600/1000ml para Artesanato e Espuma de Leite, Jarra para Café Latte e Arte em Espuma de Leite",
+  "loja": "AliExpress",
+  "preco": 11.74,
+  "link": "https://pt.aliexpress.com/item/1005007170877648.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "100 aco inoxidavel jarra leite moderna"
  }
 ]
