@@ -1006,5 +1006,17 @@
   "vezes": 1,
   "novo": false,
   "chave": "aco barista cafe inoxidavel jarra vaporizacao"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Grande",
+  "titulo": "Cafeteira Elétrica 30 Xícaras Café Jarra Vidro Grande Cor Preta - R$ 47,76",
+  "loja": "Mercado Livre",
+  "preco": 47.46,
+  "link": "https://www.promobit.com.br/oferta/cafeteira-eletrica-30-xicaras-cafe-jarra-vidro-grande-cor-preta-r-4776-3209125/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "30 cafe cafeteira eletrica jarra xicaras"
  }
 ]
