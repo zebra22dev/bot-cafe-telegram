@@ -1066,5 +1066,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "100 150 cafe espuma jarra leite"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Resistente",
+  "titulo": "Jarra de Vidro Premium para Café, Resistente ao Calor, em Borossilicato, Transparente, para Preparo Manual de Café em Casa",
+  "loja": "AliExpress",
+  "preco": 63.59,
+  "link": "https://pt.aliexpress.com/item/1005012453850402.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "ao cafe jarra premium resistente vidro"
+ },
+ {
+  "data": "2026-11-13",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Borosilicato",
+  "titulo": "Máquina De Café De Vidro De Borosilicato, Gotejador Alto, Barista Alta",
+  "loja": "AliExpress",
+  "preco": 28.82,
+  "link": "https://pt.aliexpress.com/item/1005006477115341.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "alto borosilicato cafe gotejador maquina vidro"
  }
 ]
