@@ -1390,5 +1390,53 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafeteira curte expresso pra quem"
+ },
+ {
+  "data": "2026-11-15",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Cesta",
+  "titulo": "Cesta de filtro de café de aço inoxidável, 51mm 54mm 58mm, tigela de pó de café, alça de café, sem fundo, universal, tigela de pó de café",
+  "loja": "AliExpress",
+  "preco": 6.99,
+  "link": "https://pt.aliexpress.com/item/1005007272864625.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "51mm aco cafe cesta filtro inoxidavel"
+ },
+ {
+  "data": "2026-11-15",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Sem",
+  "titulo": "Filtro de Café Sem Fundo de 51mm, Acessórios para Máquina de Café, Suporte para Cesto com Alça Oca, Compatível com Homix Saachi Qster",
+  "loja": "AliExpress",
+  "preco": 24.89,
+  "link": "https://pt.aliexpress.com/item/4000992818286.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "51mm acessorios cafe filtro fundo sem"
+ },
+ {
+  "data": "2026-11-15",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "51mm 2 orelhas café bico duplo portátil 2 copos para delonghi ec200 ec221 ec0310 ec330 ec152 acessórios de café expresso ferramenta barista",
+  "loja": "AliExpress",
+  "preco": 138.38,
+  "link": "https://pt.aliexpress.com/item/1005009932650149.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "51mm bico cafe duplo orelhas portatil"
+ },
+ {
+  "data": "2026-11-15",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "51/53/54/58mm café bottomless portaffiter rack de parede de aço inoxidável suporte de filtro inferior máquina de café expresso alça rack",
+  "loja": "AliExpress",
+  "preco": 6.99,
+  "link": "https://pt.aliexpress.com/item/1005006238256909.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "51 53 54 58mm bottomless cafe"
  }
 ]
