@@ -1474,5 +1474,17 @@
   "vezes": 1,
   "novo": false,
   "chave": "aquecido cafeteira eletrica estilo funcao manter"
+ },
+ {
+  "data": "2026-11-15",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Reutilizável",
+  "titulo": "Filtro De Café Inox Reutilizável",
+  "loja": "Aliexpress",
+  "preco": 4.99,
+  "link": "https://www.promobit.com.br/oferta/filtro-de-cafe-inox-reutilizavel-3215394/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe filtro reutilizavel"
  }
 ]
