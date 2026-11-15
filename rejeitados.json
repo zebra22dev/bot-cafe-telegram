@@ -1337,9 +1337,9 @@
   "possivel_marca": "Pires",
   "titulo": "Jogo Xícaras Café Com Pires Porcelana Branca 12 Peças",
   "loja": "Mercado Livre",
-  "preco": 59.29,
-  "link": "https://www.promobit.com.br/oferta/jogo-xicaras-cafe-com-pires-porcelana-branca-12-pecas-3214604/",
-  "vezes": 1,
+  "preco": 59.0,
+  "link": "https://meli.la/2i6QoaL",
+  "vezes": 2,
   "novo": false,
   "chave": "12 cafe jogo pires porcelana xicaras"
  },
@@ -1486,5 +1486,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe filtro reutilizavel"
+ },
+ {
+  "data": "2026-11-15",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Tampa",
+  "titulo": "Chaleira Inox 2L com Tampa Segurança",
+  "loja": "Amazon",
+  "preco": 27.9,
+  "link": "https://www.promobit.com.br/oferta/chaleira-inox-2l-com-tampa-seguranca-3215575/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "2l chaleira seguranca tampa"
  }
 ]
