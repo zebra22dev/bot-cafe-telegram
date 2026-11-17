@@ -1546,5 +1546,17 @@
   "vezes": 1,
   "novo": false,
   "chave": "cafe distribuidor espresso mexer xxxferramenta yy34"
+ },
+ {
+  "data": "2026-11-17",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Tampers",
+  "titulo": "Nivelador de café ajustável, Espresso Pó Distribuidor, Café em pó Tampers, Ferramenta Espresso Maker, 51mm, 53mm, 58mm",
+  "loja": "AliExpress",
+  "preco": 22.53,
+  "link": "https://pt.aliexpress.com/item/1005007503783410.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "ajustavel cafe distribuidor espresso nivelador po"
  }
 ]
