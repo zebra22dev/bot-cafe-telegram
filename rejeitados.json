@@ -1774,5 +1774,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "americano cafe coreia gelo simples xicara"
+ },
+ {
+  "data": "2026-11-18",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Chaleira Elétrica 1.8 L",
+  "loja": "Amazon",
+  "preco": 35.99,
+  "link": "https://www.promobit.com.br/oferta/chaleira-eletrica-18-l-3224929/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "chaleira eletrica"
  }
 ]
