@@ -1786,5 +1786,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "chaleira eletrica"
+ },
+ {
+  "data": "2026-11-18",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Cremeira",
+  "titulo": "Cafeteira Prensa Francesa Cremeira em Vidro Café Espuma de Leite Chá 350ml",
+  "loja": "AliExpress",
+  "preco": 7.94,
+  "link": "https://pt.aliexpress.com/item/1005008594052069.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe cafeteira cremeira francesa prensa vidro"
  }
 ]
