@@ -1200,14 +1200,14 @@
   "chave": "12 30ml espumar jarra leite mini"
  },
  {
-  "data": "2026-11-14",
+  "data": "2026-11-20",
   "motivo": "marca não reconhecida",
   "possivel_marca": "Listrado",
   "titulo": "Listrado simplicidade trabalho manual pequeno pote de leite vidro resistente ao calor requintado copo de leite dispensador de chá pote de leite copo d",
   "loja": "AliExpress",
-  "preco": 10.91,
+  "preco": 6.99,
   "link": "https://pt.aliexpress.com/item/1005006174014431.html",
-  "vezes": 1,
+  "vezes": 2,
   "novo": false,
   "chave": "listrado manual pequeno pote simplicidade trabalho"
  },
@@ -2122,5 +2122,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "110 flutuando monitor nimbo suporte zinnia"
+ },
+ {
+  "data": "2026-11-20",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Borossilicato",
+  "titulo": "Jarra de Leite de Vidro Borossilicato de Alta Qualidade com Listras, Jarra para Creme, Jarra para Espumar Leite para Café, Jarra para Molho e Caldo, J",
+  "loja": "AliExpress",
+  "preco": 6.99,
+  "link": "https://pt.aliexpress.com/item/1005012684460074.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "alta borossilicato jarra leite qualidade vidro"
+ },
+ {
+  "data": "2026-11-20",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Espumar",
+  "titulo": "Jarra para Espumar Leite em Aço Inoxidável 304 com Cabo de Madeira e Bico para Arte em Café, Aquecimento de Óleo e Derretimento de Manteiga",
+  "loja": "AliExpress",
+  "preco": 29.04,
+  "link": "https://pt.aliexpress.com/item/1005012234992591.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "304 aco espumar inoxidavel jarra leite"
  }
 ]
