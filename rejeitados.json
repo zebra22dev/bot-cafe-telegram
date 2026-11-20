@@ -2052,14 +2052,14 @@
   "chave": "950ml aco garrafa kubb personalizada termica"
  },
  {
-  "data": "2026-11-19",
+  "data": "2026-11-20",
   "motivo": "marca não reconhecida",
   "possivel_marca": "Jarro",
   "titulo": "Jarro De Leite De Aço Inoxidável, Jarro De Espuma, Espresso Milk Frother, Copo De Creme, Café Latte, Acessórios De Cozinha",
   "loja": "AliExpress",
-  "preco": 10.62,
+  "preco": 7.89,
   "link": "https://pt.aliexpress.com/item/1005007398268165.html",
-  "vezes": 1,
+  "vezes": 2,
   "novo": true,
   "chave": "aco espuma inoxidavel jarro jarro leite"
  },
@@ -2158,5 +2158,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "220 auto chaleira desligamento eletrica litros"
+ },
+ {
+  "data": "2026-11-20",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Jarra de espuma de leite em aço inoxidável, copo de espuma de leite, café, cappuccino, latte, arte, barista, jarros de vapor, copo de jarro de leite",
+  "loja": "AliExpress",
+  "preco": 26.57,
+  "link": "https://pt.aliexpress.com/item/1005009094669619.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "aco copo espuma inoxidavel jarra leite"
+ },
+ {
+  "data": "2026-11-20",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Jarra para espuma de leite 304, copo de aço inoxidável com alça de madeira, bico para café, arte, aquecimento, óleo, derretimento, manteiga, choc",
+  "loja": "AliExpress",
+  "preco": 36.63,
+  "link": "https://pt.aliexpress.com/item/1005010580739431.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "304 aco copo espuma jarra leite"
  }
 ]
