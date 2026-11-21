@@ -2338,5 +2338,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "51 53 58mm base cafe tamper"
+ },
+ {
+  "data": "2026-11-21",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Copo de medição de café expresso 50/75/100ml, com alça de madeira, bicos duplos/únicos, vidro transparente, resistente ao calor, jarro de leite retrô",
+  "loja": "AliExpress",
+  "preco": 20.64,
+  "link": "https://pt.aliexpress.com/item/1005004811772033.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "50 75 cafe copo expresso medicao"
+ },
+ {
+  "data": "2026-11-21",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Jarra de vidro para café com camada de madeira resistente ao calor, 17oz, em borossilicato de alta qualidade, para preparar expresso (1/2 unidade)",
+  "loja": "AliExpress",
+  "preco": 25.3,
+  "link": "https://pt.aliexpress.com/item/1005012742638131.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe camada jarra madeira resistente vidro"
  }
 ]
