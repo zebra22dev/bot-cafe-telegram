@@ -2242,5 +2242,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe cha organizador pires suporte xicaras"
+ },
+ {
+  "data": "2026-11-21",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Buba",
+  "titulo": "Garrafa Térmica Buba, Parede Dupla, Azul, Tamanho Único, 400ml",
+  "loja": "Amazon",
+  "preco": 53.09,
+  "link": "https://www.promobit.com.br/oferta/garrafa-termica-buba-parede-dupla-azul-tamanho-unico-400ml-3237324/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "azul buba dupla garrafa parede termica"
+ },
+ {
+  "data": "2026-11-21",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Resistente",
+  "titulo": "Jarra de Vidro Resistente ao Calor com Bico Gooseneck para Café e Chá, Ideal para Cozinha Doméstica e Restaurantes Ocidentais",
+  "loja": "AliExpress",
+  "preco": 52.99,
+  "link": "https://pt.aliexpress.com/item/1005012662340553.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "ao bico calor jarra resistente vidro"
  }
 ]
