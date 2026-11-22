@@ -2386,5 +2386,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "agitador cafe expresso ferramenta ferramenta wdt"
+ },
+ {
+  "data": "2026-11-22",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "350/600ml espuma de leite jarro de leite de vidro barista café expresso latte jarro de espuma de leite jarro de café transparente com escala",
+  "loja": "AliExpress",
+  "preco": 74.34,
+  "link": "https://pt.aliexpress.com/item/1005003480539578.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "350 600ml espuma jarro leite leite"
+ },
+ {
+  "data": "2026-11-22",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Tyeso",
+  "titulo": "Garrafa térmica Tyeso de 500 ml, em aço inoxidável, à prova de vazamentos, com isolamento térmico, sem BPA, ideal para viagens, para beber água e outr",
+  "loja": "AliExpress",
+  "preco": 74.42,
+  "link": "https://pt.aliexpress.com/item/1005013234878943.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "500 aco garrafa ml termica tyeso"
  }
 ]
