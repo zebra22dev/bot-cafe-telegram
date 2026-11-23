@@ -2722,5 +2722,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "aco espresso espumar inoxidavel jarra leite"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Moedor de café manual estilo vintage, tipo gaveta, com manivela, corpo em madeira, design requintado",
+  "loja": "AliExpress",
+  "preco": 105.69,
+  "link": "https://pt.aliexpress.com/item/1005013578101918.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe estilo manual moedor tipo vintage"
  }
 ]
