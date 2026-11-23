@@ -156,14 +156,14 @@
   "chave": "aco cafeteira italiana moka ou premium"
  },
  {
-  "data": "2026-11-21",
+  "data": "2026-11-23",
   "motivo": "marca não reconhecida",
   "possivel_marca": "Mimo",
   "titulo": "Mimo Style Cafeteira Prensa Francesa, Capacidade Para 350 Ml, Com Haste E Alça, Resistente, Suporta Altas E Baixas Temperaturas (-20 °c A 180 °c),",
   "loja": "Amazon",
-  "preco": 23.9,
-  "link": "https://www.promobit.com.br/oferta/mimo-style-cafeteira-prensa-francesa-capacidade-para-350-ml-com-haste-e-alca-resistente-suporta-altas-e-baixas-temperat-3022336/",
-  "vezes": 15,
+  "preco": 17.0,
+  "link": "https://link.amazon/B05NU5Cfx",
+  "vezes": 18,
   "novo": false,
   "chave": "cafeteira capacidade francesa mimo prensa style"
  },
@@ -2578,5 +2578,89 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe escala manual manual moedor moedor"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Mimo",
+  "titulo": "Cafeteira Prensa Francesa 350ml Mimo Style",
+  "loja": "Amazon",
+  "preco": 17.88,
+  "link": "https://www.promobit.com.br/oferta/cafeteira-prensa-francesa-350ml-mimo-style-3241660/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "350ml cafeteira francesa mimo prensa style"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Porcelana",
+  "titulo": "Chaleira Elétrica de Porcelana Elegance 1",
+  "loja": "Telegram @ofertasdodia",
+  "preco": 235.73,
+  "link": "https://cupom.cc/VZZew36U",
+  "vezes": 1,
+  "novo": true,
+  "chave": "chaleira elegance eletrica porcelana"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Hojicha",
+  "titulo": "Hojicha Chá Verde Torrado Namu Matcha 30 g",
+  "loja": "Café Store",
+  "preco": 89.0,
+  "link": "https://www.cafestore.com.br/hojicha-cha-verde-torrado-namu-matcha-30-g-5149/p",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cha hojicha matcha namu torrado verde"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "PURI",
+  "titulo": "PURI Blend exclusivo de Ube e Taro da Namu Matcha 50 g",
+  "loja": "Café Store",
+  "preco": 80.0,
+  "link": "https://www.cafestore.com.br/puri-blend-exclusivo-de-ube-e-taro-da-namu-matcha-50-g-5148/p",
+  "vezes": 1,
+  "novo": true,
+  "chave": "blend exclusivo namu puri taro ube"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Chocolate",
+  "titulo": "Chocolate Cremoso Maxi Mixato 900g",
+  "loja": "Café Store",
+  "preco": 94.5,
+  "link": "https://www.cafestore.com.br/chocolate-cremoso-maxi-mixato-900g-3097/p",
+  "vezes": 1,
+  "novo": true,
+  "chave": "900g chocolate cremoso maxi mixato"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Chocolate",
+  "titulo": "Chocolate Cremoso 30% Cacau Mixato 900g",
+  "loja": "Café Store",
+  "preco": 107.0,
+  "link": "https://www.cafestore.com.br/chocolate-cremoso-30--cacau-mixato-900g-3096/p",
+  "vezes": 1,
+  "novo": true,
+  "chave": "30 900g cacau chocolate cremoso mixato"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Chá",
+  "titulo": "Chá Dolce Mate Gelado em pó 1 kg",
+  "loja": "Café Store",
+  "preco": 54.9,
+  "link": "https://www.cafestore.com.br/cha-dolce-mate-gelado-em-po-1-kg_1685/p",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cha dolce gelado kg mate po"
  }
 ]
