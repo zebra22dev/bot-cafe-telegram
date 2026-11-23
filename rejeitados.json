@@ -2734,5 +2734,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "cafe estilo manual moedor tipo vintage"
+ },
+ {
+  "data": "2026-11-23",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Gourmet",
+  "titulo": "Café Gourmet Sul de Minas 250g",
+  "loja": "Amazon",
+  "preco": 17.9,
+  "link": "https://www.promobit.com.br/oferta/cafe-gourmet-sul-de-minas-250g-3242015/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "250g cafe gourmet minas sul"
  }
 ]
