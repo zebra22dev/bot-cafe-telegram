@@ -2818,5 +2818,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "aco agulhas distribuidor distribuidor inoxidavel unidade"
+ },
+ {
+  "data": "2026-11-24",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Bravo",
+  "titulo": "Bravo Café Tenor em Grãos 500G",
+  "loja": "Amazon",
+  "preco": 38.0,
+  "link": "https://www.promobit.com.br/oferta/bravo-cafe-tenor-em-graos-500g-3246325/",
+  "vezes": 1,
+  "novo": true,
+  "chave": "500g bravo cafe graos tenor"
  }
 ]
