@@ -269,9 +269,9 @@
   "possivel_marca": "Mais",
   "titulo": "Cafeteira Italiana Moka Expresso Inox 300ml Para 6 Xícaras, Café Mais Encorpado, Intenso E Aromático, Preparo Rápido Sem Filtro, Design Clássico,",
   "loja": "Amazon",
-  "preco": 47.4,
-  "link": "https://www.promobit.com.br/oferta/cafeteira-italiana-moka-expresso-inox-300ml-para-6-xicaras-cafe-mais-encorpado-intenso-e-aromatico-preparo-rapido-sem-filtro-design-classico-3178276/",
-  "vezes": 13,
+  "preco": 37.99,
+  "link": "https://www.promobit.com.br/oferta/cafeteira-italiana-moka-expresso-inox-300ml-para-6-xicaras-cafe-mais-encorpado-intenso-e-aromatico-preparo-rapido-sem-filtro-design-classico-3148836/",
+  "vezes": 14,
   "novo": false,
   "chave": "300ml cafeteira expresso italiana moka xicaras"
  },
@@ -3226,5 +3226,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "abs balanca cafe corpo lcd visor"
+ },
+ {
+  "data": "2026-11-26",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Balança de café, acessórios de cozinha, balança eletrônica, peso digital, ferramentas de medição e balanças, cozinha e alimentos de precisão",
+  "loja": "AliExpress",
+  "preco": 31.56,
+  "link": "https://pt.aliexpress.com/item/1005008347201556.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "acessorios balanca balanca cafe cozinha eletronica"
  }
 ]
