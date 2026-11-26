@@ -3166,5 +3166,41 @@
   "vezes": 1,
   "novo": true,
   "chave": "aco espuma inoxidavel jarro leite recipiente"
+ },
+ {
+  "data": "2026-11-26",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Americano",
+  "titulo": "Copo térmico de aço inoxidável 304 de 600 ml com canudo, copo reutilizável de dupla camada para Americano gelado, café e água fria, portátil",
+  "loja": "AliExpress",
+  "preco": 25.99,
+  "link": "https://pt.aliexpress.com/item/1005008558085417.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "304 600 aco copo inoxidavel termico"
+ },
+ {
+  "data": "2026-11-26",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "WX9451",
+  "titulo": "Garrafa Termica 450 ML WX9451",
+  "loja": "AliExpress",
+  "preco": 29.49,
+  "link": "https://pt.aliexpress.com/item/1005013276926319.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "450 garrafa ml termica wx9451"
+ },
+ {
+  "data": "2026-11-26",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Copo térmico mini de 300 ml em aço inoxidável, garrafa a vácuo com anel de suporte, copo isolado para carro, garrafa de água portátil para viagem, can",
+  "loja": "AliExpress",
+  "preco": 24.89,
+  "link": "https://pt.aliexpress.com/item/1005013640528025.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "300 aco copo mini ml termico"
  }
 ]
