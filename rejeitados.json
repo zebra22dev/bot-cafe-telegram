@@ -3202,5 +3202,17 @@
   "vezes": 1,
   "novo": false,
   "chave": "300 aco copo mini ml termico"
+ },
+ {
+  "data": "2026-11-26",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "TIVAXO",
+  "titulo": "GARRAFA TÉRMICA TIVAXO 500ML",
+  "loja": "AliExpress",
+  "preco": 26.76,
+  "link": "https://pt.aliexpress.com/item/1005013266411739.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "500ml garrafa termica tivaxo"
  }
 ]
