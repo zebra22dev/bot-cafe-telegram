@@ -720,14 +720,14 @@
   "chave": "ajustavel cafe distribuidor expresso inclinacoes nivelador"
  },
  {
-  "data": "2026-11-12",
+  "data": "2026-11-27",
   "motivo": "marca não reconhecida",
   "possivel_marca": "Cozinha",
   "titulo": "Balança Digital de Cozinha, Balança de Alimentos, Balança de Café, Balança Eletrônica Inteligente à Prova d'Água para Cozinhar e Assar",
   "loja": "AliExpress",
-  "preco": 51.17,
-  "link": "https://pt.aliexpress.com/item/1005007477364632.html",
-  "vezes": 1,
+  "preco": 31.99,
+  "link": "https://pt.aliexpress.com/item/1005010653411429.html",
+  "vezes": 2,
   "novo": false,
   "chave": "alimentos balanca balanca balanca cozinha digital"
  },
@@ -3658,5 +3658,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "aluminio cafeteira italiana mimo moka style"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Com temporizador para equilíbrio de alimentos pesando mini balança de pesagem doméstica balança de café eletrônica digital lcd 3kg 0.1g balanças de co",
+  "loja": "AliExpress",
+  "preco": 17.99,
+  "link": "https://pt.aliexpress.com/item/1005006995079921.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "alimentos balanca equilibrio mini pesando temporizador"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Filamento",
+  "titulo": "Filamento de seda tricolor PLA para impressora 3D, filamento multicolorido para impressão 3D de 1,75 mm, filamento roxo, azul celeste e amarelo, 250 g",
+  "loja": "AliExpress",
+  "preco": 24.99,
+  "link": "https://pt.aliexpress.com/item/1005009045299380.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "3d filamento impressora pla seda tricolor"
  }
 ]
