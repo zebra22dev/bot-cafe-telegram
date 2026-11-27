@@ -413,9 +413,9 @@
   "possivel_marca": "Rotativo",
   "titulo": "Distribuidor de Pó de Café Profissional Rotativo com Agulha, Altura Ajustável e Fixação Magnética para Espresso",
   "loja": "AliExpress",
-  "preco": 29.99,
+  "preco": 16.99,
   "link": "https://pt.aliexpress.com/item/1005013324479883.html",
-  "vezes": 2,
+  "vezes": 3,
   "novo": false,
   "chave": "agulha cafe distribuidor po profissional rotativo"
  },
@@ -3430,5 +3430,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "balanca cafe digital expresso por recarregavel"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Acessórios",
+  "titulo": "Acessórios para café de barista, jarra de aço inoxidável para espumar leite, jarra para creme de latte art, copo para vaporização de café expresso, ut",
+  "loja": "AliExpress",
+  "preco": 37.48,
+  "link": "https://pt.aliexpress.com/item/1005013041735979.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "acessorios aco barista cafe inoxidavel jarra"
  }
 ]
