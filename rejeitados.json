@@ -3466,5 +3466,29 @@
   "vezes": 1,
   "novo": true,
   "chave": "agitador agitador cafe espresso ferramenta po"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Moedor de café portátil, aço inoxidável, manivela, ferramenta de cozinha, grão de madeira",
+  "loja": "AliExpress",
+  "preco": 30.99,
+  "link": "https://pt.aliexpress.com/item/1005006678061500.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "aco cafe inoxidavel manivela moedor portatil"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Timer",
+  "titulo": "Balança Digital de Café com Timer e Tela, USB, 3kg de Peso Máximo, Medição de Alta Precisão 0.1g em Oz/ml/g, Balança de Cozinha",
+  "loja": "AliExpress",
+  "preco": 31.99,
+  "link": "https://pt.aliexpress.com/item/1005013183075685.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "balanca cafe digital tela timer usb"
  }
 ]
