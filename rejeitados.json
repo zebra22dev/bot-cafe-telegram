@@ -336,14 +336,14 @@
   "chave": "800ml copo garrafa isolado termico vacuo"
  },
  {
-  "data": "2026-11-13",
+  "data": "2026-11-27",
   "motivo": "marca não reconhecida",
   "possivel_marca": "",
   "titulo": "Moedor de café manual, escala externa, 40 ajustes de engrenagem, núcleo de moagem de cerâmica, alta qualidade, utensílios de café domésticos profissio",
   "loja": "AliExpress",
-  "preco": 45.81,
+  "preco": 34.99,
   "link": "https://pt.aliexpress.com/item/1005009234970677.html",
-  "vezes": 2,
+  "vezes": 3,
   "novo": false,
   "chave": "40 cafe escala externa manual moedor"
  },
@@ -792,14 +792,14 @@
   "chave": "cafe filtro fundo reutilizavel sem suporte"
  },
  {
-  "data": "2026-11-25",
+  "data": "2026-11-27",
   "motivo": "marca não reconhecida",
   "possivel_marca": "Carneiri",
   "titulo": "Cafeteira Italiana Inox Carneiri para 6 Xícaras",
   "loja": "Mercado Livre",
   "preco": 43.99,
   "link": "https://www.promobit.com.br/oferta/cafeteira-italiana-inox-carneiri-para-6-xicaras-3206620/",
-  "vezes": 6,
+  "vezes": 7,
   "novo": false,
   "chave": "cafeteira carneiri italiana xicaras"
  },
@@ -3442,5 +3442,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "acessorios aco barista cafe inoxidavel jarra"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Naturehike",
+  "titulo": "Naturehike 18l mochila de acampamento portátil ultraleve à prova dwaterproof água sacos náilon homem ao ar livre dobrável esportes viagem caminhadas m",
+  "loja": "AliExpress",
+  "preco": 51.99,
+  "link": "https://pt.aliexpress.com/item/1005006997632307.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "18l acampamento mochila naturehike portatil ultraleve"
  }
 ]
