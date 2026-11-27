@@ -72,14 +72,14 @@
   "chave": "alca coffee latas mantimentos minimalista sugar"
  },
  {
-  "data": "2026-11-26",
+  "data": "2026-11-27",
   "motivo": "marca não reconhecida",
   "possivel_marca": "Pítia",
   "titulo": "Chaleira Elétrica Inox 2 Litros 1500w Jarra Desligamento Automático Aquecimento Rápido Bule Pítia",
   "loja": "Mercado Livre",
   "preco": 38.0,
   "link": "https://www.promobit.com.br/oferta/chaleira-eletrica-inox-2-litros-1500w-jarra-desligamento-automatico-aquecimento-rapido-bule-pitia-3184834/",
-  "vezes": 7,
+  "vezes": 8,
   "novo": false,
   "chave": "1500w chaleira desligamento eletrica jarra litros"
  },
@@ -3802,5 +3802,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "areia biodegradavel catbio clean kg max"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Canecas",
+  "titulo": "De Conjunto de Jarra e 4 Canecas GEDO em Vidro de Borossilicato Alto Grau Alimentar, Certificado LFGB, Ultra Resistente e à Prova de Quedas, 1800ml pa",
+  "loja": "AliExpress",
+  "preco": 71.89,
+  "link": "https://pt.aliexpress.com/item/1005013532067981.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "borossilicato canecas conjunto gedo jarra vidro"
  }
 ]
