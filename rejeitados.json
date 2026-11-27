@@ -2088,14 +2088,14 @@
   "chave": "aco ecologica espumar inoxidavel jarra leite"
  },
  {
-  "data": "2026-11-22",
+  "data": "2026-11-27",
   "motivo": "marca não reconhecida",
   "possivel_marca": "Cozinha",
   "titulo": "Balança de Cozinha Digital de 10kg, Balança de Cozinha com Função Tare, Balança Eletrônica para Preparação de Café, Tela LCD em Aço Inoxidável",
   "loja": "AliExpress",
-  "preco": 42.48,
-  "link": "https://pt.aliexpress.com/item/1005010568667050.html",
-  "vezes": 2,
+  "preco": 20.66,
+  "link": "https://pt.aliexpress.com/item/1005012864449444.html",
+  "vezes": 3,
   "novo": false,
   "chave": "10kg balanca balanca cozinha cozinha digital"
  },
@@ -3418,5 +3418,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "10 1350v igbt lote pecas transistor"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Recarregável",
+  "titulo": "Balança Digital de Café Expresso Recarregável por USB com Temporizador, Tela Digital LED, 3kg 0.1g de Precisão, Ferramenta de Cozinha para Café, Prese",
+  "loja": "AliExpress",
+  "preco": 57.44,
+  "link": "https://pt.aliexpress.com/item/1005013102614002.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "balanca cafe digital expresso por recarregavel"
  }
 ]
