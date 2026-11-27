@@ -3574,5 +3574,41 @@
   "vezes": 1,
   "novo": true,
   "chave": "350ml aco bico cafeteira gooseneck inoxidavel"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Jarra de espuma de leite e café, espumante de café expresso, latte art, copo de medição de aço inoxidável, ferramentas para barista, acessórios de caf",
+  "loja": "AliExpress",
+  "preco": 9.99,
+  "link": "https://pt.aliexpress.com/item/1005008557940485.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe cafe espuma espumante jarra leite"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Cozinha",
+  "titulo": "Balança Digital de Cozinha com Tela LED e Timer, Alimentada por USB, Máximo de 3KG, Medição de Precisão de 0.1g em Oz/g/ml",
+  "loja": "AliExpress",
+  "preco": 18.99,
+  "link": "https://pt.aliexpress.com/item/1005007805616139.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "balanca cozinha digital led tela timer"
+ },
+ {
+  "data": "2026-11-27",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Eletrônica",
+  "titulo": "Balança Eletrônica de Café de Alta Precisão com Almofada Impermeável, Display LED, Temporizador USB, Acessórios Profissionais para Café em Casa 3kg/5k",
+  "loja": "AliExpress",
+  "preco": 42.99,
+  "link": "https://pt.aliexpress.com/item/1005011624094996.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "almofada alta balanca cafe eletronica precisao"
  }
 ]
