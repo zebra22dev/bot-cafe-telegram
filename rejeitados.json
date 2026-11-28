@@ -3850,5 +3850,41 @@
   "vezes": 2,
   "novo": true,
   "chave": "cafe moido pouch torrado tradicional uniao"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Pour",
+  "titulo": "Conjunto de Cafeteira Pour Over com Jarra de Vidro e Filtro de Café de Vidro, Cafeteira de Gotejamento para Casa ou Escritório 600ml 300ml",
+  "loja": "AliExpress",
+  "preco": 51.99,
+  "link": "https://pt.aliexpress.com/item/1005006996959924.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafeteira conjunto jarra over pour vidro"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Presente",
+  "titulo": "Conjunto de Presente de Garrafa Térmica de Aço Inoxidável 500ML, Garrafa Térmica de Estilo Empresarial para Escritório, Copo Térmico para Casal com Is",
+  "loja": "AliExpress",
+  "preco": 16.98,
+  "link": "https://pt.aliexpress.com/item/1005013467588413.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "aco conjunto garrafa inoxidavel presente termica"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Garrafa térmica portátil de aço inoxidável, 600ml, copo de café, garrafa térmica com isolamento de palha, não contém bpa",
+  "loja": "AliExpress",
+  "preco": 13.99,
+  "link": "https://pt.aliexpress.com/item/1005005906219932.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "600ml aco garrafa inoxidavel portatil termica"
  }
 ]
