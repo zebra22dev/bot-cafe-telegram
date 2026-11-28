@@ -3838,5 +3838,17 @@
   "vezes": 1,
   "novo": true,
   "chave": "artesanal borossilicato cafe cafeteira preparo vidro"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Tradicional",
+  "titulo": "Cafe Torrado e Moido Tradicional Pouch União 500G",
+  "loja": "Amazon",
+  "preco": 3.0,
+  "link": "https://link.amazon/B0hrj80n1",
+  "vezes": 2,
+  "novo": true,
+  "chave": "cafe moido pouch torrado tradicional uniao"
  }
 ]
