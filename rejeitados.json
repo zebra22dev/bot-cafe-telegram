@@ -1356,14 +1356,14 @@
   "chave": "balanca balanca cha cha eletronica precisao"
  },
  {
-  "data": "2026-11-15",
+  "data": "2026-11-28",
   "motivo": "marca não reconhecida",
   "possivel_marca": "",
   "titulo": "Aço inoxidável café em pó tamper espresso pó agitador distribuidor nivelador café mexendo ferramenta de cozinha acessórios barista",
   "loja": "AliExpress",
-  "preco": 5.5,
-  "link": "https://pt.aliexpress.com/item/1005008244342668.html",
-  "vezes": 1,
+  "preco": 5.99,
+  "link": "https://pt.aliexpress.com/item/1005007162250370.html",
+  "vezes": 2,
   "novo": false,
   "chave": "aco cafe espresso inoxidavel po tamper"
  },
@@ -3970,5 +3970,41 @@
   "vezes": 1,
   "novo": true,
   "chave": "aco copo elegante inoxidavel simples termico"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "Espelho",
+  "titulo": "Espelho de extração de café suporte magnético sem fundo portátil lente taxa de fluxo observação acessórios café expresso ferramentas barista",
+  "loja": "AliExpress",
+  "preco": 20.94,
+  "link": "https://pt.aliexpress.com/item/1005006827149404.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafe espelho extracao magnetico sem suporte"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "1/4 pçs toalhas de limpeza de barra de café super absorvente pano de limpeza de microfibra toalha casa barista ferramenta limpa máquina de café mais l",
+  "loja": "AliExpress",
+  "preco": 6.99,
+  "link": "https://pt.aliexpress.com/item/1005009697566896.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "barra cafe limpeza pcs super toalhas"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Nova chegada mão fermentação cafeteira válvula de controle de fluxo anti-alta temperatura silicone chaleira de café válvula de controle de água",
+  "loja": "AliExpress",
+  "preco": 16.26,
+  "link": "https://pt.aliexpress.com/item/1005008749006013.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "cafeteira chegada fermentacao mao nova valvula"
  }
 ]
