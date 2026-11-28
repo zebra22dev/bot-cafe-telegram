@@ -3894,9 +3894,33 @@
   "titulo": "Café União Tradicional Pouch 500g",
   "loja": "Mercado Livre",
   "preco": 13.99,
-  "link": "https://meli.la/1VzkKYV",
-  "vezes": 2,
+  "link": "https://meli.la/2r1QSAc",
+  "vezes": 3,
   "novo": true,
   "chave": "500g cafe pouch tradicional uniao"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Mini copo térmico de bolso inteligente, garrafa de água com display de temperatura de 200ml, frascos de vácuo de aço inoxidável com filtro",
+  "loja": "AliExpress",
+  "preco": 29.61,
+  "link": "https://pt.aliexpress.com/item/1005006533223675.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "bolso copo garrafa inteligente mini termico"
+ },
+ {
+  "data": "2026-11-28",
+  "motivo": "marca não reconhecida",
+  "possivel_marca": "",
+  "titulo": "Copo térmico de aço inoxidável 720ml, com canudo e alça, gelo, café, bebida, copo isolado a vácuo, carro, viagem, garrafa de água ao ar livre",
+  "loja": "AliExpress",
+  "preco": 27.99,
+  "link": "https://pt.aliexpress.com/item/1005012095653460.html",
+  "vezes": 1,
+  "novo": true,
+  "chave": "720ml aco canudo copo inoxidavel termico"
  }
 ]
